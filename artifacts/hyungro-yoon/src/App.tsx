@@ -11,6 +11,8 @@ const cvUrl = assetUrl('hyungro-yoon-cv.pdf');
 const portraitUrl = assetUrl('hyungro-yoon-portrait.jpeg');
 const featuredStudyFigureUrl = assetUrl('featured-study-figure.png');
 const featuredStudyPdfUrl = assetUrl('featured-study.pdf');
+const aamModelFigureUrl = assetUrl('aam-model-figure.png');
+const showerStallUrl = assetUrl('ssi-shower-stall.jpg');
 
 const pubs = [
   {
@@ -45,19 +47,19 @@ const inPrep = [
 ];
 
 function Eyebrow({ children }: { children: string }) {
-  return <p className="font-mono text-[10px] uppercase tracking-[.2em] text-primary">{children}</p>;
+  return <p className="font-mono text-xs uppercase tracking-[.2em] text-primary">{children}</p>;
 }
 
 function SectionHeading({ number, children, note }: { number: string; children: string; note?: string }) {
   return <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
     <div className="flex items-baseline gap-4"><span className="font-mono text-xs text-primary">{number}</span><h2 className="font-serif text-4xl leading-none md:text-5xl">{children}</h2></div>
-    {note && <span className="font-mono text-[10px] uppercase tracking-[.14em] text-muted-foreground">{note}</span>}
+    {note && <span className="font-mono text-xs uppercase tracking-[.14em] text-primary">{note}</span>}
   </div>;
 }
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
-  return <div className="grain min-h-[100dvh] bg-background">
+  return <div className="min-h-[100dvh] bg-background">
     <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground">Skip to content</a>
     <header className="sticky top-0 z-40 border-b border-border/80 bg-background/90 backdrop-blur-xl">
       <div className="mx-auto flex h-[68px] max-w-[1240px] items-center justify-between px-5 md:px-10">
@@ -66,9 +68,9 @@ function App() {
           <span className="text-sm font-semibold tracking-wide">HYUNGRO YOON</span>
         </a>
         <nav aria-label="Main navigation" className="hidden items-center gap-7 md:flex">
-          {nav.map(([label, href]) => <a key={label} href={href} className="nav-link font-mono text-[10px] uppercase tracking-[.12em] text-muted-foreground">{label}</a>)}
+          {nav.map(([label, href]) => <a key={label} href={href} className="nav-link font-mono text-xs uppercase tracking-[.12em] text-primary">{label}</a>)}
         </nav>
-        <a href={cvUrl} download className="hidden items-center gap-2 border border-primary/50 px-4 py-2 font-mono text-[10px] uppercase tracking-[.12em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground md:flex" data-testid="link-download-cv">
+        <a href={cvUrl} download className="hidden items-center gap-2 border border-primary/50 px-4 py-2 font-mono text-xs uppercase tracking-[.12em] text-primary transition-colors hover:bg-primary-hover hover:text-primary-foreground md:flex" data-testid="link-download-cv">
           <Download size={13} /> Download CV
         </a>
         <button type="button" aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)} className="grid h-10 w-10 place-items-center border border-border text-foreground md:hidden" data-testid="button-mobile-menu">
@@ -76,7 +78,7 @@ function App() {
         </button>
       </div>
       {menuOpen && <nav aria-label="Mobile navigation" className="border-t border-border bg-background px-5 py-4 md:hidden">
-        <div className="grid grid-cols-2 gap-1">{nav.map(([label, href]) => <a key={label} href={href} onClick={() => setMenuOpen(false)} className="nav-link py-3 font-mono text-xs uppercase tracking-wider text-muted-foreground">{label}</a>)}
+        <div className="grid grid-cols-2 gap-1">{nav.map(([label, href]) => <a key={label} href={href} onClick={() => setMenuOpen(false)} className="nav-link py-3 font-mono text-xs uppercase tracking-wider text-primary">{label}</a>)}
           <a href={cvUrl} download className="flex items-center gap-2 py-3 font-mono text-xs uppercase tracking-wider text-primary"><Download size={14}/> Download CV</a>
         </div>
       </nav>}
@@ -89,29 +91,29 @@ function App() {
           <h1 className="mt-5 max-w-[740px] font-serif text-[clamp(3.4rem,9vw,7.2rem)] leading-[.88] tracking-[-.035em]">Hyungro<br/><span className="italic text-primary">Yoon</span></h1>
           <div className="mt-7 flex items-center gap-3">
             <span className="h-px w-10 bg-primary"/>
-            <p className="font-mono text-[11px] uppercase tracking-[.14em] text-foreground/80">Ph.D. Candidate &amp; Graduate Teaching Assistant</p>
+            <p className="font-mono text-xs uppercase tracking-[.14em] text-primary">Ph.D. Candidate &amp; Graduate Teaching Assistant</p>
           </div>
-          <p className="mt-8 max-w-[570px] text-base leading-7 text-muted-foreground md:text-lg md:leading-8">I study how social norms and persuasive messages shape health and environmental behavior—especially when group identity, culture, or emotion changes what a message means.</p>
+          <p className="mt-8 max-w-[68ch] text-base leading-[1.7] text-muted-foreground md:text-lg">I study how social norms and persuasive messages shape health and environmental behavior, especially when cultural factors or emotions change what a message means.</p>
           <div className="mt-9 flex flex-wrap gap-3">
-            <a href="#research" className="inline-flex items-center gap-3 bg-primary px-5 py-3 font-mono text-[10px] uppercase tracking-[.12em] text-primary-foreground transition-transform hover:-translate-y-0.5">Explore my research <ArrowUpRight size={14}/></a>
-            <a href={cvUrl} download className="inline-flex items-center gap-3 border border-border px-5 py-3 font-mono text-[10px] uppercase tracking-[.12em] text-foreground transition-colors hover:border-primary/70 hover:text-primary">Curriculum vitae <Download size={14}/></a>
+            <a href="#research" className="inline-flex items-center gap-3 bg-primary px-5 py-3 font-mono text-xs uppercase tracking-[.12em] text-primary-foreground transition-colors hover:bg-primary-hover">Explore my research <ArrowUpRight size={14}/></a>
+            <a href={cvUrl} download className="inline-flex items-center gap-3 border border-primary/60 px-5 py-3 font-mono text-xs uppercase tracking-[.12em] text-primary transition-colors hover:bg-accent">Curriculum vitae <Download size={14}/></a>
           </div>
-          <div className="mt-12 flex flex-wrap gap-x-7 gap-y-3 border-t border-border pt-5 text-xs text-muted-foreground">
+          <div className="mt-12 flex flex-wrap gap-x-7 gap-y-3 border-t border-border pt-5 text-base text-muted-foreground">
             <span className="inline-flex items-center gap-2"><MapPin size={14} className="text-primary"/> East Lansing, Michigan</span>
             <span className="inline-flex items-center gap-2"><GraduationCap size={15} className="text-primary"/> Department of Communication</span>
           </div>
         </div>
         <div className="reveal order-1 relative mx-auto w-full max-w-[410px] md:order-2" style={{ animationDelay: '120ms' }}>
           <div className="absolute -right-3 -top-3 h-full w-full border border-primary/55"/>
-          <div className="relative aspect-[4/4.7] overflow-hidden bg-[#e6e4dc]">
+          <div className="relative aspect-[4/4.7] overflow-hidden bg-muted">
             <img src={portraitUrl} alt="Portrait of Hyungro Yoon" width="600" height="600" className="h-full w-full object-cover object-center grayscale-[12%]"/>
-            <div className="absolute inset-x-0 bottom-0 flex items-end justify-between bg-gradient-to-t from-black/65 to-transparent p-5 pt-16">
-              <span className="font-mono text-[10px] uppercase tracking-[.15em] text-white">Scholar · Educator</span>
-              <span className="font-serif text-3xl italic text-primary">MSU</span>
+            <div className="absolute inset-x-0 bottom-0 flex items-end justify-between bg-foreground/80 p-5">
+              <span className="font-mono text-xs uppercase tracking-[.15em] text-primary-foreground">Scholar · Educator</span>
+              <span className="font-serif text-3xl italic text-primary-foreground">MSU</span>
             </div>
           </div>
           <div className="absolute -bottom-8 -left-5 hidden border border-border bg-background px-4 py-3 md:block">
-            <span className="block font-mono text-[9px] uppercase tracking-[.18em] text-muted-foreground">Current chapter</span>
+            <span className="block font-mono text-xs uppercase tracking-[.18em] text-primary">Current chapter</span>
             <span className="mt-1 block text-sm">Listening across contexts.</span>
           </div>
         </div>
@@ -120,47 +122,61 @@ function App() {
       <div className="mx-auto max-w-[1240px] px-5 md:px-10"><div className="section-rule"/></div>
       <section id="about" className="mx-auto grid max-w-[1240px] gap-10 px-5 py-20 md:grid-cols-[.72fr_1.28fr] md:gap-20 md:px-10 md:py-28">
         <div><Eyebrow>01 / A little context</Eyebrow><h2 className="mt-4 font-serif text-4xl leading-tight md:text-5xl">Research is about<br/><i className="text-primary">people in context.</i></h2></div>
-        <div className="max-w-[680px]">
-          <p className="text-lg leading-8 text-foreground/90">I am a Ph.D. candidate in the Department of Communication at Michigan State University, where I also teach. My work asks how social norms and emotional appeals influence health and environmental behaviors—and how those effects shift across groups and cultural settings.</p>
-          <p className="mt-5 leading-7 text-muted-foreground">Drawing on the theory of normative social behavior (TNSB) and the anger activism model (AAM), I use cross-sectional surveys, online experiments, and field experiments. My projects include U.S.–Korea comparisons, physical distancing, binge drinking, water conservation, and campaign evaluation.</p>
-          <p className="mt-5 leading-7 text-muted-foreground">I am a member of the <a className="text-primary underline decoration-primary/40 underline-offset-4 hover:decoration-primary" href="https://marialapinski.wordpress.com/lapinskis-lions/" target="_blank" rel="noreferrer">HRCC Lions research team</a>, led by Dr. Maria K. Lapinski, and the <a className="text-primary underline decoration-primary/40 underline-offset-4 hover:decoration-primary" href="https://caselab.msu.edu/" target="_blank" rel="noreferrer">CASE Lab</a>, led by Dr. Monique Turner. Before graduate school, I worked in public relations at Edelman Korea and as a reporter intern at a Korean newspaper.</p>
+        <div className="max-w-[68ch]">
+          <p className="text-lg leading-[1.7] text-foreground/90">I am a Ph.D. candidate in the Department of Communication at Michigan State University, where I also teach. My work asks how social norms and emotional appeals influence health and environmental behaviors and how those effects shift across groups and cultural settings.</p>
+          <p className="mt-5 text-base leading-[1.7] text-muted-foreground">Drawing on theories of social norms (e.g., the theory of normative social behavior [TNSB]) and cognitive-emotional theories of persuasion (e.g., the anger activism model [AAM]), I conduct cross-cultural comparisons and study health behaviors (e.g., drinking and disease prevention), environmental behaviors (e.g., water conservation), the development and testing of persuasive campaigns, and the persuasive effects of messages generated or delivered by AI. In addition to cross-sectional surveys, online experiments, and field experiments, I use newer tools such as AI-generated video stimuli, virtual reality (VR) environments, and AI chatbots to design and test messages.</p>
+          <p className="mt-5 max-w-[68ch] text-base leading-[1.7] text-muted-foreground">I am a member of the <a className="text-primary underline decoration-primary/40 underline-offset-4 hover:decoration-primary" href="https://marialapinski.wordpress.com/lapinskis-lions/" target="_blank" rel="noreferrer">HRCC Lions research team</a>, led by Dr. Maria K. Lapinski, and the <a className="text-primary underline decoration-primary/40 underline-offset-4 hover:decoration-primary" href="https://caselab.msu.edu/" target="_blank" rel="noreferrer">CASE Lab</a>, led by Dr. Monique Turner.</p>
           <div className="mt-9 grid gap-3 sm:grid-cols-2">
-            {['Social norms & normative influence','Persuasion & emotional appeals','Health and environmental communication','Cross-cultural communication · U.S. / Korea'].map((v, i)=><div className="flex items-start gap-3 border-l border-primary/50 bg-card/70 px-4 py-3 text-sm text-foreground/85" key={v}><span className="font-mono text-[10px] text-primary">0{i+1}</span>{v}</div>)}
+            {['Social norms & normative influence','Persuasion & emotional appeals','Health and environmental communication','Cross-cultural communication','AI and persuasion'].map((v, i)=><div className={`flex items-start gap-3 border-l border-primary/50 bg-card px-4 py-3 text-base leading-[1.7] text-foreground ${i === 4 ? 'sm:col-span-2' : ''}`} key={v}><span className="font-mono text-xs text-primary">0{i+1}</span>{v}</div>)}
           </div>
         </div>
       </section>
 
-      <section id="research" className="bg-[#101116]">
+      <section id="research" className="bg-secondary">
         <div className="mx-auto max-w-[1240px] px-5 py-20 md:px-10 md:py-28">
           <SectionHeading number="02" note="Questions, not silos">Research program</SectionHeading>
           <div className="grid gap-5 md:grid-cols-[1.1fr_.9fr]">
             <article className="border border-border bg-background p-6 md:p-9">
               <div className="flex items-center justify-between"><Eyebrow>Norms · Groups · Behavior</Eyebrow><BookOpen size={19} className="text-primary"/></div>
               <h3 className="mt-6 max-w-lg font-serif text-3xl leading-tight md:text-4xl">When does a norm become persuasive?</h3>
-              <p className="mt-5 max-w-xl leading-7 text-muted-foreground">I examine when perceived norms relate to intentions and behavior, and how referent groups, group identity, group orientation, and cultural context shape that relationship. This line of work spans disease prevention, binge drinking, and water conservation.</p>
+              <p className="mt-5 max-w-[68ch] text-base leading-[1.7] text-muted-foreground">I examine when perceived norms relate to intentions and behavior, and how referent groups, group identity, group orientation, and cultural context shape that relationship. This line of work spans disease prevention, binge drinking, and water conservation.</p>
               <figure className="mt-7 overflow-hidden border border-border bg-white p-2">
                 <img src={featuredStudyFigureUrl} alt="Figure 3. Interaction effects of descriptive norms and group orientation on physical distancing behaviors." width="1500" height="1013" loading="lazy" className="h-auto w-full"/>
-                <figcaption className="px-2 py-2 font-mono text-[9px] leading-5 text-neutral-700">Figure 3. Interaction effects of descriptive norms and group orientation on physical distancing behaviors.</figcaption>
+                <figcaption className="px-2 py-2 font-mono text-xs leading-5 text-neutral-700">Figure 3. Interaction effects of descriptive norms and group orientation on physical distancing behaviors.</figcaption>
               </figure>
-              <a href={featuredStudyPdfUrl} download className="mt-4 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[.12em] text-primary hover:underline" data-testid="link-featured-study-pdf">Download featured study PDF <Download size={13}/></a>
-              <div className="mt-8 flex flex-wrap gap-2">{['TNSB','Referent groups','Group identity','U.S.–Korea'].map(t=><span key={t} className="border border-border px-2.5 py-1 font-mono text-[9px] uppercase tracking-wider text-muted-foreground">{t}</span>)}</div>
+              <a href={featuredStudyPdfUrl} download className="mt-4 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[.12em] text-primary hover:underline" data-testid="link-featured-study-pdf">Download featured study PDF <Download size={13}/></a>
+              <div className="mt-8 flex flex-wrap gap-2">{['TNSB','Referent groups','Group identity','U.S.–Korea'].map(t=><span key={t} className="border border-border bg-accent px-2.5 py-1 font-mono text-xs uppercase tracking-wider text-accent-foreground">{t}</span>)}</div>
             </article>
             <div className="grid gap-5">
-              <article className="border border-border bg-background p-6 md:p-8">
+              <article className="flex h-full flex-col border border-border bg-background p-6 md:p-8">
                 <div className="flex items-center justify-between"><Eyebrow>Emotion · Efficacy · Action</Eyebrow><Microscope size={19} className="text-primary"/></div>
                 <h3 className="mt-5 font-serif text-3xl">Anger in persuasion</h3>
-                <p className="mt-4 leading-7 text-muted-foreground">With CASE Lab, I study anger-based persuasion through the anger activism model, focusing on how anger and efficacy interact in commitment to social activism.</p>
+                <p className="mt-4 max-w-[68ch] text-base leading-[1.7] text-muted-foreground">With CASE Lab, I study anger-based persuasion through the anger activism model (AAM), focusing on how anger and efficacy interact to predict commitment to social activism. Across multiple experiments, I use nonlinear models of anger, average marginal effects (AMEs), and second differences to identify the levels of anger at which the effects of efficacy change.</p>
+                <figure className="mt-auto pt-6">
+                  <div className="border border-border bg-white p-2">
+                    <img src={aamModelFigureUrl} alt="Line graph of the anger activism model's predictions. With strong efficacy beliefs, prosocial outcomes rise linearly as anger increases from 0 to 100; with weak efficacy beliefs, outcomes rise, then fall, then level off below the scale midpoint." width="1030" height="716" loading="lazy" className="h-auto w-full"/>
+                  </div>
+                  <figcaption className="mt-2 px-1 font-mono text-xs leading-5 text-muted-foreground">Predictions of the anger activism model (AAM; Turner, 2007) for prosocial outcomes.</figcaption>
+                  <p className="mt-2 px-1 text-base leading-[1.7] text-muted-foreground">When efficacy beliefs are strong, the model predicts that prosocial outcomes increase steadily as anger increases. When efficacy beliefs are weak, it predicts an inverse U-shape: moderate anger promotes action, but extreme anger becomes less productive.</p>
+                </figure>
               </article>
-              <article className="border border-border bg-background p-6 md:p-8">
-                <Eyebrow>Campaigns · New channels</Eyebrow>
+              <article className="flex h-full flex-col border border-border bg-background p-6 md:p-8">
+                <Eyebrow>Campaigns · AI</Eyebrow>
                 <h3 className="mt-4 font-serif text-3xl">From formative work to feedback</h3>
-                <p className="mt-4 leading-7 text-muted-foreground">I contribute to campaign research, including the Shorter Shower Initiative and a six-wave collegiate social-norms campaign study. More recently, I have begun examining responses to descriptive norm feedback delivered through relational AI.</p>
+                <p className="mt-4 max-w-[68ch] text-base leading-[1.7] text-muted-foreground">I contribute to campaign research, including the Shorter Shower Initiative and a six-wave collegiate social-norms campaign study. More recently, I have begun to examine whether AI can help correct normative misperceptions, for example, how people respond to descriptive norm feedback delivered through conversations with a relational AI chatbot.</p>
+                <figure className="mt-auto pt-6">
+                  <div className="flex justify-center border border-border bg-white p-2">
+                    <img src={showerStallUrl} alt="Photo of a dormitory shower stall with tiled walls. A small digital water meter is installed above the showerhead, and a round shower timer, an instruction card, and a poster titled 'Quickies are good for the planet' are mounted on the wall." width="676" height="901" loading="lazy" className="block h-auto max-w-full md:max-h-[420px]"/>
+                  </div>
+                  <figcaption className="mt-2 px-1 font-mono text-xs leading-5 text-muted-foreground">A shower stall in the timer + message condition of the Shorter Shower Initiative field experiment.</figcaption>
+                  <p className="mt-2 px-1 text-base leading-[1.7] text-muted-foreground">A water meter installed between the shower arm and the showerhead recorded water use for each shower. In this condition, a shower timer, a card explaining how to use it, and a persuasive poster were placed on the stall wall.</p>
+                </figure>
               </article>
             </div>
           </div>
           <div className="mt-8 flex flex-col justify-between gap-5 border-t border-border pt-6 md:flex-row md:items-center">
-            <p className="max-w-2xl text-sm leading-6 text-muted-foreground">A mix of cross-sectional surveys, online experiments, and field experiments helps connect message design with real-world contexts.</p>
-            <a href="#publications" className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[.14em] text-primary">Browse scholarly work <ChevronRight size={14}/></a>
+            <p className="max-w-[68ch] text-base leading-[1.7] text-muted-foreground">A mix of cross-sectional surveys, online experiments, field experiments, and newer tools such as AI-generated stimuli, VR environments, and chatbots helps connect message design with real-world contexts.</p>
+            <a href="#publications" className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[.14em] text-primary hover:underline">Browse scholarly work <ChevronRight size={14}/></a>
           </div>
         </div>
       </section>
