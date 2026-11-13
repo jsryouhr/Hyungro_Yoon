@@ -1,0 +1,1 @@
+- [Python installs in pnpm workspaces](python-installs-in-pnpm-workspaces.md) — one-off Python package installs can scaffold Python files and alter `.replit`; inspect and clean generated changes.

@@ -6,6 +6,12 @@ const nav = [
   ['Teaching', '#teaching'], ['Experience', '#experience'], ['Contact', '#contact'],
 ];
 
+const assetUrl = (asset: string) => `${import.meta.env.BASE_URL}assets/${asset}`;
+const cvUrl = assetUrl('hyungro-yoon-cv.pdf');
+const portraitUrl = assetUrl('hyungro-yoon-portrait.jpeg');
+const featuredStudyFigureUrl = assetUrl('featured-study-figure.png');
+const featuredStudyPdfUrl = assetUrl('featured-study.pdf');
+
 const pubs = [
   {
     status: 'Published · 2025', title: 'Social norms for illegal hunting and patrolling to prevent it: Formative data for intervention design and communication campaigns.',
@@ -62,7 +68,7 @@ function App() {
         <nav aria-label="Main navigation" className="hidden items-center gap-7 md:flex">
           {nav.map(([label, href]) => <a key={label} href={href} className="nav-link font-mono text-[10px] uppercase tracking-[.12em] text-muted-foreground">{label}</a>)}
         </nav>
-        <a href="/assets/hyungro-yoon-cv.pdf" download className="hidden items-center gap-2 border border-primary/50 px-4 py-2 font-mono text-[10px] uppercase tracking-[.12em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground md:flex" data-testid="link-download-cv">
+        <a href={cvUrl} download className="hidden items-center gap-2 border border-primary/50 px-4 py-2 font-mono text-[10px] uppercase tracking-[.12em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground md:flex" data-testid="link-download-cv">
           <Download size={13} /> Download CV
         </a>
         <button type="button" aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)} className="grid h-10 w-10 place-items-center border border-border text-foreground md:hidden" data-testid="button-mobile-menu">
@@ -71,7 +77,7 @@ function App() {
       </div>
       {menuOpen && <nav aria-label="Mobile navigation" className="border-t border-border bg-background px-5 py-4 md:hidden">
         <div className="grid grid-cols-2 gap-1">{nav.map(([label, href]) => <a key={label} href={href} onClick={() => setMenuOpen(false)} className="nav-link py-3 font-mono text-xs uppercase tracking-wider text-muted-foreground">{label}</a>)}
-          <a href="/assets/hyungro-yoon-cv.pdf" download className="flex items-center gap-2 py-3 font-mono text-xs uppercase tracking-wider text-primary"><Download size={14}/> Download CV</a>
+          <a href={cvUrl} download className="flex items-center gap-2 py-3 font-mono text-xs uppercase tracking-wider text-primary"><Download size={14}/> Download CV</a>
         </div>
       </nav>}
     </header>
@@ -88,7 +94,7 @@ function App() {
           <p className="mt-8 max-w-[570px] text-base leading-7 text-muted-foreground md:text-lg md:leading-8">I study how social norms and persuasive messages shape health and environmental behavior—especially when group identity, culture, or emotion changes what a message means.</p>
           <div className="mt-9 flex flex-wrap gap-3">
             <a href="#research" className="inline-flex items-center gap-3 bg-primary px-5 py-3 font-mono text-[10px] uppercase tracking-[.12em] text-primary-foreground transition-transform hover:-translate-y-0.5">Explore my research <ArrowUpRight size={14}/></a>
-            <a href="/assets/hyungro-yoon-cv.pdf" download className="inline-flex items-center gap-3 border border-border px-5 py-3 font-mono text-[10px] uppercase tracking-[.12em] text-foreground transition-colors hover:border-primary/70 hover:text-primary">Curriculum vitae <Download size={14}/></a>
+            <a href={cvUrl} download className="inline-flex items-center gap-3 border border-border px-5 py-3 font-mono text-[10px] uppercase tracking-[.12em] text-foreground transition-colors hover:border-primary/70 hover:text-primary">Curriculum vitae <Download size={14}/></a>
           </div>
           <div className="mt-12 flex flex-wrap gap-x-7 gap-y-3 border-t border-border pt-5 text-xs text-muted-foreground">
             <span className="inline-flex items-center gap-2"><MapPin size={14} className="text-primary"/> East Lansing, Michigan</span>
@@ -98,7 +104,7 @@ function App() {
         <div className="reveal order-1 relative mx-auto w-full max-w-[410px] md:order-2" style={{ animationDelay: '120ms' }}>
           <div className="absolute -right-3 -top-3 h-full w-full border border-primary/55"/>
           <div className="relative aspect-[4/4.7] overflow-hidden bg-[#e6e4dc]">
-            <img src="/assets/hyungro-yoon-portrait.jpeg" alt="Portrait of Hyungro Yoon" className="h-full w-full object-cover object-center grayscale-[12%]"/>
+            <img src={portraitUrl} alt="Portrait of Hyungro Yoon" width="600" height="600" className="h-full w-full object-cover object-center grayscale-[12%]"/>
             <div className="absolute inset-x-0 bottom-0 flex items-end justify-between bg-gradient-to-t from-black/65 to-transparent p-5 pt-16">
               <span className="font-mono text-[10px] uppercase tracking-[.15em] text-white">Scholar · Educator</span>
               <span className="font-serif text-3xl italic text-primary">MSU</span>
@@ -132,6 +138,11 @@ function App() {
               <div className="flex items-center justify-between"><Eyebrow>Norms · Groups · Behavior</Eyebrow><BookOpen size={19} className="text-primary"/></div>
               <h3 className="mt-6 max-w-lg font-serif text-3xl leading-tight md:text-4xl">When does a norm become persuasive?</h3>
               <p className="mt-5 max-w-xl leading-7 text-muted-foreground">I examine when perceived norms relate to intentions and behavior, and how referent groups, group identity, group orientation, and cultural context shape that relationship. This line of work spans disease prevention, binge drinking, and water conservation.</p>
+              <figure className="mt-7 overflow-hidden border border-border bg-white p-2">
+                <img src={featuredStudyFigureUrl} alt="Figure 3. Interaction effects of descriptive norms and group orientation on physical distancing behaviors." width="1500" height="1013" loading="lazy" className="h-auto w-full"/>
+                <figcaption className="px-2 py-2 font-mono text-[9px] leading-5 text-neutral-700">Figure 3. Interaction effects of descriptive norms and group orientation on physical distancing behaviors.</figcaption>
+              </figure>
+              <a href={featuredStudyPdfUrl} download className="mt-4 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[.12em] text-primary hover:underline" data-testid="link-featured-study-pdf">Download featured study PDF <Download size={13}/></a>
               <div className="mt-8 flex flex-wrap gap-2">{['TNSB','Referent groups','Group identity','U.S.–Korea'].map(t=><span key={t} className="border border-border px-2.5 py-1 font-mono text-[9px] uppercase tracking-wider text-muted-foreground">{t}</span>)}</div>
             </article>
             <div className="grid gap-5">
@@ -215,7 +226,7 @@ function App() {
         </div>
         <div className="mt-10 flex flex-col gap-4 border border-border bg-card p-5 md:flex-row md:items-center md:justify-between">
           <p className="text-sm leading-6 text-muted-foreground">The CV includes full citations, accepted conference papers, and additional professional detail.</p>
-          <a href="/assets/hyungro-yoon-cv.pdf" download className="inline-flex shrink-0 items-center gap-2 bg-primary px-4 py-3 font-mono text-[10px] uppercase tracking-wider text-primary-foreground transition-transform hover:-translate-y-0.5"><Download size={14}/> Download full CV</a>
+          <a href={cvUrl} download className="inline-flex shrink-0 items-center gap-2 bg-primary px-4 py-3 font-mono text-[10px] uppercase tracking-wider text-primary-foreground transition-transform hover:-translate-y-0.5"><Download size={14}/> Download full CV</a>
         </div>
       </section>
 

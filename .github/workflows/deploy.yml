@@ -1,0 +1,82 @@
+name: Deploy academic website to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.26.1
+          run_install: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Install workspace dependencies
+        run: pnpm install --frozen-lockfile --prod=false
+
+      - name: Build academic website
+        run: pnpm --filter @workspace/hyungro-yoon run build
+        env:
+          PORT: "4173"
+          BASE_PATH: /Hyungro_Yoon/
+
+      - name: Verify production output
+        shell: bash
+        run: |
+          set -euo pipefail
+          output="artifacts/hyungro-yoon/dist/public"
+          test -f "$output/index.html"
+          test -f "$output/favicon.svg"
+          test -f "$output/assets/hyungro-yoon-portrait.jpeg"
+          test -f "$output/assets/featured-study-figure.png"
+          test -f "$output/assets/featured-study.pdf"
+          test -f "$output/assets/hyungro-yoon-cv.pdf"
+          grep -Fq "/Hyungro_Yoon/" "$output/index.html"
+          bundle="$(find "$output/assets" -maxdepth 1 -type f -name '*.js' -print -quit)"
+          test -n "$bundle"
+          for section in "about" "research" "publications" "contact" "featured-study.pdf" "hyungro-yoon-cv.pdf"; do
+            grep -Fq "$section" "$bundle"
+          done
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: artifacts/hyungro-yoon/dist/public
+
+  deploy:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
