@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --font-sans: var(--app-font-sans);
+  --font-serif: var(--app-font-serif);
+  --font-mono: var(--app-font-mono);
+  --radius: 0.5rem;
+}
+:root {
+  color-scheme: dark;
+  --background: 225 9% 7%; --foreground: 45 20% 92%;
+  --card: 225 8% 10%; --card-foreground: 45 20% 92%;
+  --border: 220 7% 20%; --input: 220 7% 25%; --ring: 50 96% 58%;
+  --primary: 50 96% 58%; --primary-foreground: 225 9% 7%;
+  --secondary: 225 7% 15%; --secondary-foreground: 45 20% 92%;
+  --muted: 225 7% 14%; --muted-foreground: 220 9% 68%;
+  --accent: 50 96% 58%; --accent-foreground: 225 9% 7%;
+  --destructive: 0 68% 55%; --destructive-foreground: 45 20% 92%;
+  --popover: 225 8% 10%; --popover-foreground: 45 20% 92%;
+  --app-font-sans: 'DM Sans', sans-serif; --app-font-serif: 'Instrument Serif', Georgia, serif;
+  --app-font-mono: 'DM Mono', monospace; --radius: 0.5rem;
+  --sidebar: 225 9% 7%; --sidebar-foreground: 45 20% 92%; --sidebar-border: 220 7% 20%;
+  --sidebar-primary: 50 96% 58%; --sidebar-primary-foreground: 225 9% 7%;
+  --sidebar-accent: 225 7% 14%; --sidebar-accent-foreground: 45 20% 92%; --sidebar-ring: 50 96% 58%;
+  --card-border: 220 7% 20%; --chart-1: 50 96% 58%; --chart-2: 186 45% 55%; --chart-3: 9 55% 62%; --chart-4: 280 32% 65%; --chart-5: 140 35% 57%;
+  --button-outline: rgba(255,255,255,.1); --badge-outline: rgba(255,255,255,.08);
+  --elevate-1: rgba(255,255,255,.04); --elevate-2: rgba(255,255,255,.08);
+}
+.dark { color-scheme: dark; }
+@layer base {
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; }
+  body { @apply font-sans antialiased bg-background text-foreground; margin:0; }
+  ::selection { background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); }
+}
+:focus-visible { outline: 2px solid hsl(var(--primary)); outline-offset: 4px; }
+.grain::after { content:''; position:fixed; inset:0; z-index:50; pointer-events:none; opacity:.12; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.15'/%3E%3C/svg%3E"); }
+.reveal { animation: rise .7s both; }
+@keyframes rise { from { opacity:0; transform:translateY(14px) } to { opacity:1; transform:translateY(0) } }
+.nav-link { transition: color .2s ease; }
+.nav-link:hover { color: hsl(var(--primary)); }
+.section-rule { border-top:1px solid hsl(var(--border)); }
+.paper-row { transition: border-color .2s ease, background-color .2s ease; }
+.paper-row:hover { border-color: hsl(var(--primary) / .55); background: hsl(var(--card)); }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior:auto!important; animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; } }

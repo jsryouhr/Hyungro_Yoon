@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Hyungro Yoon — Academic Website"
+description = "An academic portfolio for Hyungro Yoon, featuring verified biographical details, research and professional work drawn from his supplied materials."
+version = "1.0.0"
+id = "artifacts/hyungro-yoon"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24529
+
+[services.development]
+run = "pnpm --filter @workspace/hyungro-yoon run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/hyungro-yoon", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/hyungro-yoon/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24529"
+BASE_PATH = "/"
