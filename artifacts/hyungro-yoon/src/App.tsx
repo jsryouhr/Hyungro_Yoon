@@ -233,7 +233,7 @@ function App() {
                 <p className="font-serif text-6xl leading-none text-primary">4.23<span className="ml-2 font-sans text-base text-muted-foreground">/ 5</span></p>
                 <p className="mt-4 text-base leading-[1.6]">&ldquo;Hyungro Yoon created an atmosphere that supported my learning.&rdquo;</p>
                 <p className="mt-3 text-sm leading-6 text-muted-foreground">Average rating across 10 end-of-term surveys, 2023&ndash;2026 (70 responses). 84% agreed or strongly agreed; none disagreed.</p>
-                <p className="mt-4 border-t border-border pt-3 text-xs leading-5 text-muted-foreground">Source: MSU Student Perceptions of Learning Survey</p>
+                <p className="mt-4 border-t border-border pt-3 text-xs leading-5 text-muted-foreground">Source: Michigan State University Student Perceptions of Learning Survey</p>
               </div>
               <div className="divide-y divide-border border-y border-border">
                 {[
