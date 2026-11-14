@@ -65,19 +65,19 @@ function App() {
       <div className="mx-auto flex h-[68px] max-w-[1240px] items-center justify-between px-5 md:px-10">
         <a href="#top" className="flex items-center gap-3 no-underline" aria-label="Hyungro Yoon, home">
           <span className="grid h-8 w-8 place-items-center border border-primary/70 font-serif text-lg text-primary">Y</span>
-          <span className="text-sm font-semibold tracking-wide">HYUNGRO YOON</span>
+          <span className="text-base font-semibold tracking-wide">HYUNGRO YOON</span>
         </a>
-        <nav aria-label="Main navigation" className="hidden items-center gap-7 md:flex">
+        <nav aria-label="Main navigation" className="hidden items-center gap-7 lg:flex">
           {nav.map(([label, href]) => <a key={label} href={href} className="nav-link font-mono text-xs uppercase tracking-[.12em] text-primary">{label}</a>)}
         </nav>
-        <a href={cvUrl} download className="hidden items-center gap-2 border border-primary/50 px-4 py-2 font-mono text-xs uppercase tracking-[.12em] text-primary transition-colors hover:bg-primary-hover hover:text-primary-foreground md:flex" data-testid="link-download-cv">
+        <a href={cvUrl} download className="hidden items-center gap-2 border border-primary/50 px-4 py-2 font-mono text-xs uppercase tracking-[.12em] text-primary transition-colors hover:bg-primary-hover hover:text-primary-foreground lg:flex" data-testid="link-download-cv">
           <Download size={13} /> Download CV
         </a>
-        <button type="button" aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)} className="grid h-10 w-10 place-items-center border border-border text-foreground md:hidden" data-testid="button-mobile-menu">
+        <button type="button" aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)} className="grid h-10 w-10 place-items-center border border-border text-foreground lg:hidden" data-testid="button-mobile-menu">
           {menuOpen ? <X size={19}/> : <Menu size={19}/>}
         </button>
       </div>
-      {menuOpen && <nav aria-label="Mobile navigation" className="border-t border-border bg-background px-5 py-4 md:hidden">
+      {menuOpen && <nav aria-label="Mobile navigation" className="border-t border-border bg-background px-5 py-4 lg:hidden">
         <div className="grid grid-cols-2 gap-1">{nav.map(([label, href]) => <a key={label} href={href} onClick={() => setMenuOpen(false)} className="nav-link py-3 font-mono text-xs uppercase tracking-wider text-primary">{label}</a>)}
           <a href={cvUrl} download className="flex items-center gap-2 py-3 font-mono text-xs uppercase tracking-wider text-primary"><Download size={14}/> Download CV</a>
         </div>
@@ -107,14 +107,14 @@ function App() {
           <div className="absolute -right-3 -top-3 h-full w-full border border-primary/55"/>
           <div className="relative aspect-[4/4.7] overflow-hidden bg-muted">
             <img src={portraitUrl} alt="Portrait of Hyungro Yoon" width="600" height="600" className="h-full w-full object-cover object-center grayscale-[12%]"/>
-            <div className="absolute inset-x-0 bottom-0 flex items-end justify-between bg-foreground/80 p-5">
-              <span className="font-mono text-xs uppercase tracking-[.15em] text-primary-foreground">Scholar · Educator</span>
-              <span className="font-serif text-3xl italic text-primary-foreground">MSU</span>
+            <div className="absolute inset-x-0 bottom-0 flex items-end justify-between bg-background/95 p-5">
+              <span className="font-mono text-xs uppercase tracking-[.15em] text-primary">Scholar · Educator</span>
+              <span className="font-serif text-3xl italic text-primary">MSU</span>
             </div>
           </div>
           <div className="absolute -bottom-8 -left-5 hidden border border-border bg-background px-4 py-3 md:block">
             <span className="block font-mono text-xs uppercase tracking-[.18em] text-primary">Current chapter</span>
-            <span className="mt-1 block text-sm">Listening across contexts.</span>
+            <span className="mt-1 block text-base">Listening across contexts.</span>
           </div>
         </div>
       </section>
@@ -136,7 +136,7 @@ function App() {
         <div className="mx-auto max-w-[1240px] px-5 py-20 md:px-10 md:py-28">
           <SectionHeading number="02" note="Questions, not silos">Research program</SectionHeading>
           <div className="grid gap-5 md:grid-cols-[1.1fr_.9fr]">
-            <article className="border border-border bg-background p-6 md:p-9">
+            <article className="border border-border bg-card p-6 md:p-9">
               <div className="flex items-center justify-between"><Eyebrow>Norms · Groups · Behavior</Eyebrow><BookOpen size={19} className="text-primary"/></div>
               <h3 className="mt-6 max-w-lg font-serif text-3xl leading-tight md:text-4xl">When does a norm become persuasive?</h3>
               <p className="mt-5 max-w-[68ch] text-base leading-[1.7] text-muted-foreground">I examine when perceived norms relate to intentions and behavior, and how referent groups, group identity, group orientation, and cultural context shape that relationship. This line of work spans disease prevention, binge drinking, and water conservation.</p>
@@ -148,7 +148,7 @@ function App() {
               <div className="mt-8 flex flex-wrap gap-2">{['TNSB','Referent groups','Group identity','U.S.–Korea'].map(t=><span key={t} className="border border-border bg-accent px-2.5 py-1 font-mono text-xs uppercase tracking-wider text-accent-foreground">{t}</span>)}</div>
             </article>
             <div className="grid gap-5">
-              <article className="flex h-full flex-col border border-border bg-background p-6 md:p-8">
+              <article className="flex h-full flex-col border border-border bg-card p-6 md:p-8">
                 <div className="flex items-center justify-between"><Eyebrow>Emotion · Efficacy · Action</Eyebrow><Microscope size={19} className="text-primary"/></div>
                 <h3 className="mt-5 font-serif text-3xl">Anger in persuasion</h3>
                 <p className="mt-4 max-w-[68ch] text-base leading-[1.7] text-muted-foreground">With CASE Lab, I study anger-based persuasion through the anger activism model (AAM), focusing on how anger and efficacy interact to predict commitment to social activism. Across multiple experiments, I use nonlinear models of anger, average marginal effects (AMEs), and second differences to identify the levels of anger at which the effects of efficacy change.</p>
@@ -160,7 +160,7 @@ function App() {
                   <p className="mt-2 px-1 text-base leading-[1.7] text-muted-foreground">When efficacy beliefs are strong, the model predicts that prosocial outcomes increase steadily as anger increases. When efficacy beliefs are weak, it predicts an inverse U-shape: moderate anger promotes action, but extreme anger becomes less productive.</p>
                 </figure>
               </article>
-              <article className="flex h-full flex-col border border-border bg-background p-6 md:p-8">
+              <article className="flex h-full flex-col border border-border bg-card p-6 md:p-8">
                 <Eyebrow>Campaigns · AI</Eyebrow>
                 <h3 className="mt-4 font-serif text-3xl">From formative work to feedback</h3>
                 <p className="mt-4 max-w-[68ch] text-base leading-[1.7] text-muted-foreground">I contribute to campaign research, including the Shorter Shower Initiative and a six-wave collegiate social-norms campaign study. More recently, I have begun to examine whether AI can help correct normative misperceptions, for example, how people respond to descriptive norm feedback delivered through conversations with a relational AI chatbot.</p>
@@ -187,24 +187,24 @@ function App() {
           <div className="mb-5 flex items-center gap-3"><span className="h-2 w-2 bg-primary"/><h3 className="font-mono text-xs uppercase tracking-[.16em]">Published work</h3></div>
           <div className="divide-y divide-border border-y border-border">
             {pubs.map(p=><article key={p.title} className="paper-row grid gap-3 py-6 md:grid-cols-[150px_1fr] md:gap-8">
-              <span className="font-mono text-[10px] uppercase tracking-wider text-primary">{p.status}</span>
-              <div><h4 className="font-serif text-[22px] leading-snug">{p.title}</h4><p className="mt-3 text-xs leading-5 text-muted-foreground">{p.authors}</p><p className="mt-1 text-xs italic text-muted-foreground">{p.journal}</p></div>
+              <span className="font-mono text-xs uppercase tracking-wider text-primary">{p.status}</span>
+              <div><h4 className="font-serif text-[22px] leading-snug">{p.title}</h4><p className="mt-3 text-base leading-[1.7] text-muted-foreground">{p.authors}</p><p className="mt-1 text-base italic leading-[1.7] text-muted-foreground">{p.journal}</p></div>
             </article>)}
           </div>
           <article className="paper-row grid gap-3 border-b border-border py-6 md:grid-cols-[150px_1fr] md:gap-8">
-            <span className="font-mono text-[10px] uppercase tracking-wider text-primary">Published · 2025</span>
-            <div><h4 className="font-serif text-[22px] leading-snug">Book review: <i>Acknowledging Indigenous Knowledge: Voices of Tropical Forest People</i>, by P. Bose.</h4><p className="mt-2 text-xs text-muted-foreground">Yoon, H. · <i>Environmental Politics.</i></p></div>
+            <span className="font-mono text-xs uppercase tracking-wider text-primary">Published · 2025</span>
+            <div><h4 className="font-serif text-[22px] leading-snug">Book review: <i>Acknowledging Indigenous Knowledge: Voices of Tropical Forest People</i>, by P. Bose.</h4><p className="mt-2 text-base leading-[1.7] text-muted-foreground">Yoon, H. · <i>Environmental Politics.</i></p></div>
           </article>
         </div>
         <div className="grid gap-12 lg:grid-cols-2">
           <div>
             <div className="mb-5 flex items-center gap-3"><span className="h-2 w-2 border border-primary"/><h3 className="font-mono text-xs uppercase tracking-[.16em]">Under review</h3></div>
-            <div className="border-y border-border py-5"><p className="font-serif text-xl leading-snug">{inReview[0].split(' — ')[0]}</p><p className="mt-3 text-xs leading-5 text-muted-foreground">{inReview[0].split(' — ')[1]}</p><p className="mt-2 font-mono text-[9px] uppercase tracking-wider text-primary">Manuscript under review</p></div>
+            <div className="border-y border-border py-5"><p className="font-serif text-xl leading-snug">{inReview[0].split(' — ')[0]}</p><p className="mt-3 text-base leading-[1.7] text-muted-foreground">{inReview[0].split(' — ')[1]}</p><p className="mt-2 font-mono text-xs uppercase tracking-wider text-primary">Manuscript under review</p></div>
           </div>
           <div>
             <div className="mb-5 flex items-center gap-3"><span className="h-2 w-2 border border-muted-foreground"/><h3 className="font-mono text-xs uppercase tracking-[.16em]">In preparation</h3></div>
             <div className="divide-y divide-border border-y border-border">
-              {inPrep.map((title, i)=><div key={title} className="flex gap-4 py-4"><span className="mt-1 font-mono text-[10px] text-primary">0{i+1}</span><div><p className="text-sm leading-6 text-foreground/85">{title}</p><span className="mt-1 block font-mono text-[9px] uppercase tracking-wider text-muted-foreground">Manuscript in preparation</span></div></div>)}
+              {inPrep.map((title, i)=><div key={title} className="flex gap-4 py-4"><span className="mt-1 font-mono text-xs text-primary">0{i+1}</span><div><p className="text-base leading-[1.7] text-foreground">{title}</p><span className="mt-1 block font-mono text-xs uppercase tracking-wider text-primary">Manuscript in preparation</span></div></div>)}
             </div>
           </div>
         </div>
@@ -224,7 +224,7 @@ function App() {
                 ['2024 · ICA','You Can Do It and Here’s How! The Use (or Absence) of Efficacy Messaging in Obesity Prevention Campaigns.'],
                 ['2023 · ICA','The role of collective group orientation and social norms on physical distancing behaviors for disease prevention.'],
                 ['2022 · NCA','Moment-by-moment tracking of brain responses to an engaging story: A replication study using forward and reverse correlation to study narrative reception.'],
-              ].map(([year, title])=><article key={title} className="grid gap-2 py-4 sm:grid-cols-[105px_1fr] sm:gap-4"><span className="font-mono text-[9px] uppercase tracking-wider text-primary">{year}</span><div><p className="text-sm leading-6 text-foreground/85">{title}</p><span className="mt-1 block font-mono text-[9px] uppercase tracking-wider text-muted-foreground">Accepted for presentation</span></div></article>)}
+              ].map(([year, title])=><article key={title} className="grid gap-2 py-4 sm:grid-cols-[105px_1fr] sm:gap-4"><span className="font-mono text-xs uppercase tracking-wider text-primary">{year}</span><div><p className="text-base leading-[1.7] text-foreground">{title}</p><span className="mt-1 block font-mono text-xs uppercase tracking-wider text-primary">Accepted for presentation</span></div></article>)}
             </div>
           </div>
           <div>
@@ -235,29 +235,29 @@ function App() {
                 'When normative feedback becomes a conversation: Relational AI and the acceptance of descriptive norm feedback. [Extended abstract submitted for presentation]',
                 'The Shorter Shower Initiative: Combining timer technology and persuasive messages to shape water use. [Paper submitted for presentation]',
                 'Measuring campaign dose and its association with drinking norms and behavior: A six-wave trend study of a collegiate social norms campaign. [Paper submitted for presentation]',
-              ].map((title, i)=><article key={title} className="grid gap-2 py-4 sm:grid-cols-[32px_1fr] sm:gap-4"><span className="font-mono text-[10px] text-primary">0{i+1}</span><div><p className="text-sm leading-6 text-foreground/85">{title.split(' [')[0]}</p><span className="mt-1 block font-mono text-[9px] leading-5 text-muted-foreground">{title.split(' [')[1]?.replace(']', '')}</span><span className="mt-1 block font-mono text-[9px] uppercase tracking-wider text-primary">Submitted to 77th ICA · 2026</span></div></article>)}
+              ].map((title, i)=><article key={title} className="grid gap-2 py-4 sm:grid-cols-[32px_1fr] sm:gap-4"><span className="font-mono text-xs text-primary">0{i+1}</span><div><p className="text-base leading-[1.7] text-foreground">{title.split(' [')[0]}</p><span className="mt-1 block font-mono text-xs leading-5 text-primary">{title.split(' [')[1]?.replace(']', '')}</span><span className="mt-1 block font-mono text-xs uppercase tracking-wider text-primary">Submitted to 77th ICA · 2026</span></div></article>)}
             </div>
-            <p className="mt-5 text-xs leading-5 text-muted-foreground">The CV also lists accepted presentations at NCA and ICA; conference status is distinct from manuscript publication status.</p>
+            <p className="mt-5 text-base leading-[1.7] text-muted-foreground">The CV also lists accepted presentations at NCA and ICA; conference status is distinct from manuscript publication status.</p>
           </div>
         </div>
         <div className="mt-10 flex flex-col gap-4 border border-border bg-card p-5 md:flex-row md:items-center md:justify-between">
-          <p className="text-sm leading-6 text-muted-foreground">The CV includes full citations, accepted conference papers, and additional professional detail.</p>
-          <a href={cvUrl} download className="inline-flex shrink-0 items-center gap-2 bg-primary px-4 py-3 font-mono text-[10px] uppercase tracking-wider text-primary-foreground transition-transform hover:-translate-y-0.5"><Download size={14}/> Download full CV</a>
+          <p className="text-base leading-[1.7] text-muted-foreground">The CV includes full citations, accepted conference papers, and additional professional detail.</p>
+          <a href={cvUrl} download className="inline-flex shrink-0 items-center gap-2 bg-primary px-4 py-3 font-mono text-xs uppercase tracking-wider text-primary-foreground transition-colors hover:bg-primary-hover"><Download size={14}/> Download full CV</a>
         </div>
       </section>
 
-      <section id="teaching" className="bg-[#101116]">
+      <section id="teaching" className="bg-secondary">
         <div className="mx-auto max-w-[1240px] px-5 py-20 md:px-10 md:py-28">
           <SectionHeading number="04" note="Michigan State University, unless noted">Teaching</SectionHeading>
           <div className="grid gap-10 md:grid-cols-[.72fr_1.28fr]">
-            <div><h3 className="font-serif text-3xl leading-tight">Teaching is a practice of making ideas usable.</h3><p className="mt-5 leading-7 text-muted-foreground">As a graduate teaching assistant, I have supported undergraduate courses across organizational communication, methods, and human communication.</p></div>
+            <div><h3 className="font-serif text-3xl leading-tight">Teaching is a practice of making ideas usable.</h3><p className="mt-5 max-w-[68ch] text-base leading-[1.7] text-muted-foreground">As a graduate teaching assistant, I have supported undergraduate courses across organizational communication, methods, and human communication.</p></div>
             <div className="divide-y divide-border border-y border-border">
               {[
                 ['COM 240','Organizational Communication','Fall 2026 · Summer 2026 · Fall 2024'],
                 ['COM 300','Methods of Communication Inquiry','Spring 2026 · Fall 2025 · Spring 2025'],
                 ['COM 100','Human Communication','Summer 2024 · Spring 2024 · Fall 2023'],
                 ['COMM 3710','Introduction to Quantitative Communication Research','Spring 2021 · University of Utah'],
-              ].map(([code, title, term])=><article key={code} className="grid gap-2 py-5 sm:grid-cols-[100px_1fr] sm:gap-5"><span className="font-mono text-xs text-primary">{code}</span><div><h4 className="text-base">{title}</h4><p className="mt-1 font-mono text-[10px] leading-5 text-muted-foreground">{term}</p></div></article>)}
+              ].map(([code, title, term])=><article key={code} className="grid gap-2 py-5 sm:grid-cols-[100px_1fr] sm:gap-5"><span className="font-mono text-xs text-primary">{code}</span><div><h4 className="text-base">{title}</h4><p className="mt-1 font-mono text-xs leading-5 text-primary">{term}</p></div></article>)}
             </div>
           </div>
         </div>
@@ -272,29 +272,29 @@ function App() {
               ['2026','Graduate Certificate, Health and Risk Communication','Michigan State University · East Lansing, MI'],
               ['2023','M.A., Communication','Michigan State University · East Lansing, MI'],
               ['2021','B.A., Communication; minor in Film Studies','University of Utah · Salt Lake City, UT'],
-            ].map(([year, degree, school])=><article key={degree} className="relative pb-7 last:pb-0"><span className="absolute -left-[29px] top-1.5 h-1.5 w-1.5 bg-primary"/><span className="font-mono text-[10px] text-primary">{year}</span><h3 className="mt-1 text-base">{degree}</h3><p className="mt-1 text-sm text-muted-foreground">{school}</p></article>)}
+            ].map(([year, degree, school])=><article key={degree} className="relative pb-7 last:pb-0"><span className="absolute -left-[29px] top-1.5 h-1.5 w-1.5 bg-primary"/><span className="font-mono text-xs text-primary">{year}</span><h3 className="mt-1 text-base">{degree}</h3><p className="mt-1 text-base leading-[1.7] text-muted-foreground">{school}</p></article>)}
           </div></div>
           <div><Eyebrow>Professional background</Eyebrow><div className="mt-5 border-l border-border pl-6">
-            <article className="relative pb-7"><span className="absolute -left-[29px] top-1.5 h-1.5 w-1.5 bg-primary"/><h3 className="text-base">Public relations</h3><p className="mt-1 text-sm text-muted-foreground">Edelman Korea</p><p className="mt-3 text-sm leading-6 text-muted-foreground">Professional experience in public relations before graduate study.</p></article>
-            <article className="relative"><span className="absolute -left-[29px] top-1.5 h-1.5 w-1.5 bg-primary"/><h3 className="text-base">Reporter intern</h3><p className="mt-1 text-sm text-muted-foreground">Korean newspaper</p><p className="mt-3 text-sm leading-6 text-muted-foreground">An early professional experience in journalism.</p></article>
+            <article className="relative pb-7"><span className="absolute -left-[29px] top-1.5 h-1.5 w-1.5 bg-primary"/><h3 className="text-base">Public relations</h3><p className="mt-1 text-base leading-[1.7] text-muted-foreground">Edelman Korea</p><p className="mt-3 text-base leading-[1.7] text-muted-foreground">Professional experience in public relations before graduate study.</p></article>
+            <article className="relative"><span className="absolute -left-[29px] top-1.5 h-1.5 w-1.5 bg-primary"/><h3 className="text-base">Reporter intern</h3><p className="mt-1 text-base leading-[1.7] text-muted-foreground">Korean newspaper</p><p className="mt-3 text-base leading-[1.7] text-muted-foreground">An early professional experience in journalism.</p></article>
           </div></div>
         </div>
       </section>
 
       <section id="contact" className="border-t border-border bg-primary text-primary-foreground">
         <div className="mx-auto grid max-w-[1240px] gap-8 px-5 py-16 md:grid-cols-[1fr_auto] md:items-end md:px-10 md:py-20">
-          <div><p className="font-mono text-[10px] uppercase tracking-[.2em] opacity-75">06 / Get in touch</p><h2 className="mt-4 font-serif text-5xl leading-none md:text-7xl">Let’s continue<br/><i>the conversation.</i></h2><p className="mt-5 max-w-lg text-sm leading-6 opacity-80">For questions about my research, teaching, or academic work, please reach out by email.</p></div>
+          <div><p className="font-mono text-xs uppercase tracking-[.2em]">06 / Get in touch</p><h2 className="mt-4 font-serif text-5xl leading-none md:text-7xl">Let’s continue<br/><i>the conversation.</i></h2><p className="mt-5 max-w-[68ch] text-base leading-[1.7]">For questions about my research, teaching, or academic work, please reach out by email.</p></div>
           <div className="flex flex-col gap-4 md:items-end">
             <a href="mailto:yoonhy12@msu.edu" className="inline-flex items-center gap-3 border border-primary-foreground/50 px-5 py-4 font-mono text-xs tracking-wide transition-colors hover:bg-primary-foreground hover:text-primary" data-testid="link-contact-email"><Mail size={16}/> yoonhy12@msu.edu <ArrowUpRight size={14}/></a>
-            <span className="font-mono text-[9px] uppercase tracking-[.15em] opacity-70">Department of Communication · Michigan State University</span>
+            <span className="font-mono text-xs uppercase tracking-[.15em]">Department of Communication · Michigan State University</span>
           </div>
         </div>
       </section>
     </main>
     <footer className="bg-background">
-      <div className="mx-auto flex max-w-[1240px] flex-col gap-3 px-5 py-6 text-[10px] text-muted-foreground sm:flex-row sm:items-center sm:justify-between md:px-10">
+      <div className="mx-auto flex max-w-[1240px] flex-col gap-3 px-5 py-6 text-base leading-[1.7] text-muted-foreground sm:flex-row sm:items-center sm:justify-between md:px-10">
         <span>Hyungro Yoon · Communication scholar, educator, and researcher.</span>
-        <a href="https://marialapinski.wordpress.com/lapinskis-lions/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 font-mono uppercase tracking-wider hover:text-primary">HRCC Lions <ArrowUpRight size={11}/></a>
+        <a href="https://marialapinski.wordpress.com/lapinskis-lions/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 font-mono text-xs uppercase tracking-wider text-primary hover:underline">HRCC Lions <ArrowUpRight size={12}/></a>
       </div>
     </footer>
   </div>;
