@@ -213,12 +213,12 @@ function App() {
           <SectionHeading number="04" note="Michigan State University, unless noted">Teaching</SectionHeading>
           <div className="grid gap-10 md:grid-cols-[.72fr_1.28fr]">
             <div>
-              <p className="max-w-[68ch] text-base leading-[1.7] text-muted-foreground">As a graduate teaching assistant, I have supported undergraduate courses across organizational communication, methods, and human communication.</p>
+              <p className="max-w-[68ch] text-base leading-[1.7] text-muted-foreground">As a graduate teaching assistant, I have supported undergraduate courses across organizational communication, methods, and human communication. In Summer 2026, I taught an online section of COM 240 as the instructor.</p>
               <p className="mt-4 text-sm leading-6 text-muted-foreground">Teaching interests: Persuasion · Health communication · Research methods · Cross-cultural communication</p>
             </div>
             <div className="divide-y divide-border border-y border-border">
               {[
-                ['COM 240','Organizational Communication','Fall 2026 · Summer 2026 · Fall 2024'],
+                ['COM 240','Organizational Communication','Fall 2026 · Summer 2026 (Instructor, online) · Fall 2024'],
                 ['COM 300','Methods of Communication Inquiry','Spring 2026 · Fall 2025 · Spring 2025'],
                 ['COM 100','Human Communication','Summer 2024 · Spring 2024 · Fall 2023'],
                 ['COMM 3710','Introduction to Quantitative Communication Research','Spring 2021 · University of Utah'],
@@ -239,7 +239,7 @@ function App() {
                 {[
                   ['Hyungro Yoon was great. The recitations were very informational and he did a great job of engaging us students. He created a great environment where students wanted to interact and be involved in class every week. …', 'COM 240 · Fall 2024'],
                   ['Hyungro is amazing and helped us every step of the way!', 'COM 300 · Spring 2026'],
-                  ['I really enjoyed this class. Being an older student already having a career in a professional setting, and being recently promoted, I found that all of the course work benefited me greatly and tied in to my work life. The assignments were engaging and helped me grow professionally.', 'COM 240 · Summer 2026 (online)'],
+                  ['I really enjoyed this class. Being an older student already having a career in a professional setting, and being recently promoted, I found that all of the course work benefited me greatly and tied in to my work life. The assignments were engaging and helped me grow professionally.', 'COM 240 · Summer 2026 · Instructor, online'],
                 ].map(([quote, source]) => <figure key={source} className="py-5">
                   <blockquote className="max-w-[62ch] font-serif text-xl leading-[1.45]">&ldquo;{quote}&rdquo;</blockquote>
                   <figcaption className="mt-2 font-mono text-xs leading-5 text-primary">{source}</figcaption>
