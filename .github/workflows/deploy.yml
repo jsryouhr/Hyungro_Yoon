@@ -59,6 +59,10 @@ jobs:
           test -f "$output/assets/featured-study.pdf"
           test -f "$output/assets/hyungro-yoon-cv.pdf"
           grep -Fq "/Hyungro_Yoon/" "$output/index.html"
+          test -f "$output/google92138473028e6239.html"
+          # The page text must be in the HTML itself for crawlers that do not run JavaScript.
+          grep -Fq "Publications" "$output/index.html"
+          grep -Fq "Yoon, H." "$output/index.html"
           bundle="$(find "$output/assets" -maxdepth 1 -type f -name '*.js' -print -quit)"
           test -n "$bundle"
           for section in "about" "research" "publications" "contact" "featured-study.pdf" "hyungro-yoon-cv.pdf"; do
