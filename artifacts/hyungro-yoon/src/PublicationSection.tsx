@@ -12,6 +12,14 @@ function Authors({ names }: { names: string }) {
   ));
 }
 
+function DoiLink({ href }: { href: string }) {
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-2 [overflow-wrap:anywhere]">
+      {href}
+    </a>
+  );
+}
+
 function PublicationRow({
   label,
   children,
@@ -61,42 +69,42 @@ const manuscriptsInPreparation = [
   {
     authors: 'Yoon, H., Turner, M. M., Jeon, M., & Cho, H. J.',
     title: 'Not all efficacy is the same: Disaggregating self-efficacy, response efficacy, and retributive efficacy in anger-based persuasion.',
-    tag: '[Accepted at NCA 2026]',
+    tag: 'Accepted at NCA 2026',
   },
   {
     authors: 'Yoon, H., Lapinski, M. K., & Choi, H.',
     title: 'Cultural dynamics and social norms in binge drinking.',
-    tag: '[Accepted at NCA 2026]',
+    tag: 'Accepted at NCA 2026',
   },
   {
     authors: 'Yoon, H., Lapinski, M. K., Kim, M., Waller, J., & Moore, N.',
     title: 'Whose norms, whose group? The role of referent groups and group identity in normative influence on water conservation behavior.',
-    tag: '[Submitted to ICA 2027]',
+    tag: 'Submitted to ICA 2027',
   },
   {
     authors: 'Yoon, H., Kim, M., Heo, R., Iyer, S., Lapinski, M., Moore, N., Tracey, K., & Waller, J.',
     title: 'The Shorter Shower Initiative: Using formative data to shape messages about water conservation.',
-    tag: '[Presented at NCA 2025]',
+    tag: 'Presented at NCA 2025',
   },
   {
     authors: 'Lapinski, M. K., Waller, J., Moore, N., Yoon, H., Kim, M., Tracey, K., Iyer, S., Heo, R., & Chowles, R.',
     title: 'The Shorter Shower Initiative: Combining timer technology and persuasive messages to shape water use.',
-    tag: '[Submitted to ICA 2027]',
+    tag: 'Submitted to ICA 2027',
   },
   {
     authors: 'Turner, M. M., Cho, H. J., Yoon, H., Jeon, M., & Du, Y.',
     title: 'The anger defiance hypothesis: When discouraging efficacy fuels agency.',
-    tag: '[Presented at NCA 2025]',
+    tag: 'Presented at NCA 2025',
   },
   {
     authors: 'Turner, M. M., Cho, H. J., Yoon, H., Jeon, M., & Du, Y.',
     title: 'Measuring emotional flow: Assessing self-report and psychophysiological indicators with multi-trait multi-measure methodology.',
-    tag: '[Accepted at NCA 2026]',
+    tag: 'Accepted at NCA 2026',
   },
   {
     authors: 'Turner, M. M., Cho, H. J., & Yoon, H.',
     title: 'Measuring campaign dose and its association with drinking norms and behavior: A six-wave trend study of a collegiate social-norms campaign.',
-    tag: '[Submitted to ICA 2027]',
+    tag: 'Submitted to ICA 2027',
   },
 ];
 
@@ -174,7 +182,7 @@ const presentationGroups = [
       },
       {
         authors: 'Cho, H. J., Turner, M. M., Jeon, M., Yoon, H., Long, J., & Ha, J. H.',
-        title: 'You can do it and here’s how! The use (or absence) of efficacy messaging in obesity prevention campaigns.',
+        title: "You can do it and here's how! The use (or absence) of efficacy messaging in obesity prevention campaigns.",
       },
     ],
   },
@@ -218,7 +226,7 @@ export default function PublicationSection({ cvUrl }: { cvUrl: string }) {
             {journalArticles.map((article) => (
               <PublicationRow key={article.year} label={article.year} testId={`publication-journal-${article.year}`}>
                 <Authors names={article.authors} /> ({article.year}). {article.title} {article.venue}{' '}
-                <a href={article.doi} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-2">DOI</a>
+                <DoiLink href={article.doi} />
                 {article.pdf && (
                   <>
                     {' · '}
@@ -234,8 +242,8 @@ export default function PublicationSection({ cvUrl }: { cvUrl: string }) {
           <h3 id="book-review-heading" className="mb-3 text-sm font-semibold">Book review</h3>
           <div className="border-y border-border">
             <PublicationRow label="2026" testId="publication-book-review">
-              <Authors names="Yoon, H." /> (2026). Review of the book <em>Acknowledging Indigenous knowledge: Voices of tropical forest people</em>, by P. Bose. <em>Environmental Politics.</em>{' '}
-              <a href="https://doi.org/10.1080/09644016.2026.2624252" target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-2">DOI</a>
+              <Authors names="Yoon, H." /> (2026). Review of the book <em>Acknowledging Indigenous knowledge: Voices of tropical forest people</em>, by P. Bose. <em>Environmental Politics</em>.{' '}
+              <DoiLink href="https://doi.org/10.1080/09644016.2026.2624252" />
             </PublicationRow>
           </div>
         </section>
@@ -254,8 +262,8 @@ export default function PublicationSection({ cvUrl }: { cvUrl: string }) {
           <div className="border-y border-border divide-y divide-border">
             {manuscriptsInPreparation.map((manuscript, index) => (
               <PublicationRow key={manuscript.title} label={`0${index + 1}`} testId={`publication-in-preparation-${index + 1}`}>
-                <Authors names={manuscript.authors} /> {manuscript.title}
-                <span className="mt-2 inline-block border border-border bg-accent px-2 py-0.5 font-mono text-xs text-accent-foreground">{manuscript.tag}</span>
+                <Authors names={manuscript.authors} /> {manuscript.title}{' '}
+                <span className="inline-block whitespace-nowrap border border-border bg-accent px-2 py-0.5 align-middle font-mono text-xs leading-4 text-accent-foreground">{manuscript.tag}</span>
               </PublicationRow>
             ))}
           </div>

@@ -91,7 +91,7 @@ function App() {
           <h1 className="mt-5 max-w-[740px] font-serif text-[clamp(3.4rem,9vw,7.2rem)] leading-[.88] tracking-[-.035em]">Hyungro<br/><span className="italic text-primary">Yoon</span></h1>
           <div className="mt-7 flex items-center gap-3">
             <span className="h-px w-10 bg-primary"/>
-            <p className="text-sm text-primary">Ph.D. Candidate &amp; Graduate Teaching Assistant</p>
+            <p className="text-sm text-muted-foreground">Ph.D. Candidate &amp; Graduate Teaching Assistant</p>
           </div>
           <p className="mt-8 max-w-[68ch] text-base leading-[1.7] text-muted-foreground md:text-lg">I study how social norms and persuasive messages shape health and environmental behavior, especially when cultural factors or emotions change what a message means.</p>
           <div className="mt-9 flex flex-wrap gap-3">
@@ -105,9 +105,11 @@ function App() {
           </div>
         </div>
         <div className="reveal order-1 relative mx-auto w-full max-w-[410px] md:order-2" style={{ animationDelay: '120ms' }}>
-          <div className="absolute -right-3 -top-3 h-full w-full border border-primary/55"/>
-          <div className="relative aspect-[4/4.7] overflow-hidden bg-muted">
-            <img src={portraitUrl} alt="Portrait of Hyungro Yoon" width="600" height="600" className="h-full w-full object-cover object-center grayscale-[12%]"/>
+          <div className="relative">
+            <div className="absolute -right-3 -top-3 h-full w-full border border-primary/55"/>
+            <div className="relative aspect-[4/4.7] overflow-hidden bg-muted">
+              <img src={portraitUrl} alt="Portrait of Hyungro Yoon" width="600" height="600" className="h-full w-full object-cover object-center grayscale-[12%]"/>
+            </div>
           </div>
           <div className="mt-3 border border-border bg-background px-4 py-3 md:absolute md:-bottom-8 md:-left-5 md:mt-0">
             <span className="block text-sm text-muted-foreground">Dissertation</span>
@@ -125,7 +127,7 @@ function App() {
           <p className="mt-5 text-base leading-[1.7] text-muted-foreground">My dissertation extends the anger activism model by examining how perceived injunctive norms, together with efficacy beliefs, shape whether anger leads to activism intentions.</p>
           <p className="mt-5 max-w-[68ch] text-base leading-[1.7] text-muted-foreground">I am a member of the <a className="text-primary underline decoration-primary/40 underline-offset-4 hover:decoration-primary" href="https://marialapinski.wordpress.com/lapinskis-lions/" target="_blank" rel="noopener noreferrer" data-testid="link-hrcc-lions-about">HRCC Lions research team</a>, led by Dr. Maria K. Lapinski, and the <a className="text-primary underline decoration-primary/40 underline-offset-4 hover:decoration-primary" href="https://caselab.msu.edu/" target="_blank" rel="noopener noreferrer" data-testid="link-case-lab-about">CASE Lab</a>, led by Dr. Monique Turner.</p>
           <div className="mt-9 grid gap-3 sm:grid-cols-2">
-            {['Social norms & normative influence','Persuasion & emotional appeals','Health and environmental communication','Cross-cultural communication','AI and persuasion'].map((v, i)=><div className={`flex items-start gap-3 border-l border-primary/50 bg-card px-4 py-3 text-sm leading-[1.7] text-foreground ${i === 4 ? 'sm:col-span-2' : ''}`} key={v}><span className="text-sm text-primary">0{i+1}</span>{v}</div>)}
+            {['Social norms & normative influence','Persuasion & emotional appeals','Health and environmental communication','Cross-cultural communication','AI and persuasion'].map((v, i)=><div className={`flex items-start gap-3 border-l border-primary/50 bg-card px-4 py-3 text-sm leading-[1.7] text-foreground ${i === 4 ? 'sm:col-span-2' : ''}`} key={v}><span className="text-sm text-muted-foreground">0{i+1}</span>{v}</div>)}
           </div>
         </div>
       </section>
@@ -178,12 +180,13 @@ function App() {
                 <p className="mt-4 max-w-[68ch] text-base leading-[1.7] text-muted-foreground">I contribute to campaign research, including the Shorter Shower Initiative and a six-wave collegiate social-norms campaign study. More recently, I have begun to examine whether AI can help correct normative misperceptions, for example, how people respond to descriptive norm feedback delivered through conversations with a relational AI chatbot.</p>
               </div>
               <figure className="min-w-0">
-                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                  <a href={ssiStallSetupUrl} target="_blank" rel="noopener noreferrer" aria-label="Open full-size Shorter Shower Initiative stall setup image in a new tab" className="block border border-border bg-white p-2" data-testid="link-ssi-stall-image">
-                    <img src={ssiStallSetupUrl} alt="Shower stall with a digital water meter above the showerhead, and a round shower timer, an instruction card, and a poster mounted on the tiled wall." width="380" height="730" loading="lazy" className="h-auto w-full object-contain sm:h-[300px] lg:h-[380px]" data-testid="img-ssi-stall"/>
+                {/* Each image's flex-grow equals its aspect ratio (380/730, 1100/1640), so side by side they render at the same height, uncropped. max-w caps that height at 380px. */}
+                <div className="flex flex-col gap-3 sm:max-w-[501px] sm:flex-row sm:items-start">
+                  <a href={ssiStallSetupUrl} target="_blank" rel="noopener noreferrer" aria-label="Open full-size Shorter Shower Initiative stall setup image in a new tab" className="block min-w-0 border border-border bg-white p-2 sm:flex-[0.5205_1_0%]" data-testid="link-ssi-stall-image">
+                    <img src={ssiStallSetupUrl} alt="Shower stall with a digital water meter above the showerhead, and a round shower timer, an instruction card, and a poster mounted on the tiled wall." width="380" height="730" loading="lazy" className="block h-auto w-full object-contain" data-testid="img-ssi-stall"/>
                   </a>
-                  <a href={ssiPosterUrl} target="_blank" rel="noopener noreferrer" aria-label="Open full-size Shorter Shower Initiative poster image in a new tab" className="block border border-border bg-white p-2" data-testid="link-ssi-poster-image">
-                    <img src={ssiPosterUrl} alt="Poster titled 'Quickies are good for the planet' with a playlist of three songs, the carbon emissions saved by getting out of the shower before each song ends, and the line 'Heating water is a major source of carbon emissions.'" width="1100" height="1640" loading="lazy" className="h-auto w-full object-contain sm:h-[300px] lg:h-[380px]" data-testid="img-ssi-poster"/>
+                  <a href={ssiPosterUrl} target="_blank" rel="noopener noreferrer" aria-label="Open full-size Shorter Shower Initiative poster image in a new tab" className="block min-w-0 border border-border bg-white p-2 sm:flex-[0.6707_1_0%]" data-testid="link-ssi-poster-image">
+                    <img src={ssiPosterUrl} alt="Poster titled 'Quickies are good for the planet' with a playlist of three songs, the carbon emissions saved by getting out of the shower before each song ends, and the line 'Heating water is a major source of carbon emissions.'" width="1100" height="1640" loading="lazy" className="block h-auto w-full object-contain" data-testid="img-ssi-poster"/>
                   </a>
                 </div>
                 <figcaption className="mt-3 text-sm leading-6 text-muted-foreground">Shorter Shower Initiative field experiment. Left: a shower stall in the timer + message condition; a water meter installed above the showerhead recorded water use for each shower. Right: the poster used in this condition (7-minute version for women&apos;s bathrooms; the men&apos;s version recommended 6 minutes). The QR code that linked to the playlist is not shown.</figcaption>
@@ -212,7 +215,7 @@ function App() {
                 ['COM 300','Methods of Communication Inquiry','Spring 2026 · Fall 2025 · Spring 2025'],
                 ['COM 100','Human Communication','Summer 2024 · Spring 2024 · Fall 2023'],
                 ['COMM 3710','Introduction to Quantitative Communication Research','Spring 2021 · University of Utah'],
-              ].map(([code, title, term])=><article key={code} className="grid gap-2 py-5 sm:grid-cols-[100px_1fr] sm:gap-5"><span className="text-sm font-semibold text-primary">{code}</span><div><h4 className="text-base">{title}</h4><p className="mt-1 font-mono text-xs leading-5 text-primary">{term}</p></div></article>)}
+              ].map(([code, title, term])=><article key={code} className="grid gap-2 py-5 sm:grid-cols-[100px_1fr] sm:gap-5"><span className="text-sm font-semibold text-muted-foreground">{code}</span><div><h4 className="text-base">{title}</h4><p className="mt-1 font-mono text-xs leading-5 text-primary">{term}</p></div></article>)}
             </div>
           </div>
         </div>
