@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Menu, X, ArrowUpRight, Download, Mail, MapPin, BookOpen, Microscope, GraduationCap, Fingerprint, Linkedin } from 'lucide-react';
 import PublicationSection from './PublicationSection';
+import SectionHeading from './SectionHeading';
 
 const nav = [
   ['About', '#about'], ['Research', '#research'], ['Publications', '#publications'],
@@ -33,28 +34,10 @@ const featuredStudyPdfUrl = assetUrl('featured-study.pdf');
 const aamModelFigureUrl = assetUrl('aam-model-figure.png');
 const ssiStallSetupUrl = assetUrl('ssi-stall-setup.jpg');
 const ssiPosterUrl = assetUrl('ssi-poster.png');
+const aiChatbotMockupUrl = assetUrl('ai-chatbot-mockup.png');
 
 function Eyebrow({ children }: { children: string }) {
   return <p className="font-mono text-xs uppercase tracking-[.2em] text-primary">{children}</p>;
-}
-
-function SectionHeading({
-  number,
-  children,
-  note,
-  className = 'mb-10',
-  inverse = false,
-}: {
-  number: string;
-  children: string;
-  note?: string;
-  className?: string;
-  inverse?: boolean;
-}) {
-  return <div className={`${className} flex flex-wrap items-baseline justify-between gap-4`}>
-    <div className="flex items-baseline gap-4"><span className={`font-mono text-xs ${inverse ? 'text-primary-foreground' : 'text-primary'}`}>{number}</span><h2 className={`font-serif text-4xl leading-none md:text-5xl ${inverse ? 'text-primary-foreground' : ''}`}>{children}</h2></div>
-    {note && <span className="text-sm text-muted-foreground">{note}</span>}
-  </div>;
 }
 
 function App() {
@@ -98,16 +81,20 @@ function App() {
             <a href="#research" className="inline-flex items-center gap-3 bg-primary px-5 py-3 text-sm text-primary-foreground transition-colors hover:bg-primary-hover" data-testid="link-explore-research">Explore my research <ArrowUpRight size={14}/></a>
             <a href={cvUrl} download className="inline-flex items-center gap-3 border border-primary/60 px-5 py-3 text-sm text-primary transition-colors hover:bg-accent" data-testid="link-hero-cv">Curriculum vitae <Download size={14}/></a>
           </div>
-          <div className="mt-12 flex flex-wrap gap-x-7 gap-y-3 border-t border-border pt-5 text-sm text-muted-foreground">
-            <span className="inline-flex items-center gap-2"><MapPin size={14} className="text-primary"/> East Lansing, Michigan</span>
-            <span className="inline-flex items-center gap-2"><GraduationCap size={15} className="text-primary"/> Department of Communication</span>
-            {profileLinks.map(({ label, href, Icon }) => <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-primary underline decoration-primary/30 underline-offset-4 hover:decoration-primary" data-testid={`link-profile-${label.toLowerCase().replace(' ', '-')}`}><Icon size={14}/>{label}</a>)}
+          <div className="mt-12 border-t border-border pt-5 text-sm text-muted-foreground">
+            <div className="flex flex-wrap gap-x-7 gap-y-2">
+              <span className="inline-flex items-center gap-2"><MapPin size={14} className="text-primary"/> East Lansing, Michigan</span>
+              <span className="inline-flex items-center gap-2"><GraduationCap size={15} className="text-primary"/> Department of Communication</span>
+            </div>
+            <div className="mt-2 flex flex-wrap gap-x-6">
+              {profileLinks.map(({ label, href, Icon }) => <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-8 items-center gap-2 text-primary underline decoration-primary/30 underline-offset-4 hover:decoration-primary" data-testid={`link-profile-${label.toLowerCase().replace(' ', '-')}`}><Icon size={14}/>{label}</a>)}
+            </div>
           </div>
         </div>
         <div className="reveal order-1 relative mx-auto w-full max-w-[410px] md:order-2" style={{ animationDelay: '120ms' }}>
           <div className="relative">
             <div className="absolute -right-3 -top-3 h-full w-full border border-primary/55"/>
-            <div className="relative aspect-[4/4.7] overflow-hidden bg-muted">
+            <div className="relative aspect-square overflow-hidden bg-muted">
               <img src={portraitUrl} alt="Portrait of Hyungro Yoon" width="600" height="600" className="h-full w-full object-cover object-center grayscale-[12%]"/>
             </div>
           </div>
@@ -154,7 +141,7 @@ function App() {
                   <figcaption className="mt-2 px-1 text-sm leading-5 text-muted-foreground">Figure 3. Interaction effects of descriptive norms and group orientation on physical distancing behaviors.</figcaption>
                   <p className="mt-1 px-1 text-sm leading-5 text-muted-foreground">Source: Yoon et al. (2024).</p>
                 </figure>
-                <a href={featuredStudyPdfUrl} download className="mt-3 inline-flex items-center gap-2 text-sm text-primary underline underline-offset-2" data-testid="link-featured-study-pdf">Download PDF (open access) <Download size={14}/></a>
+                <a href={featuredStudyPdfUrl} download className="mt-2 inline-flex min-h-8 items-center gap-2 text-sm text-primary underline underline-offset-2" data-testid="link-featured-study-pdf">Download PDF (open access) <Download size={14}/></a>
               </div>
             </article>
 
@@ -163,38 +150,45 @@ function App() {
                 <div className="flex items-center justify-between"><Eyebrow>Emotion · Efficacy · Action</Eyebrow><Microscope size={19} className="text-primary"/></div>
                 <h3 className="mt-5 font-serif text-3xl">Anger in persuasion</h3>
                 <p className="mt-4 max-w-[68ch] text-base leading-[1.7] text-muted-foreground">With CASE Lab, I study anger-based persuasion through the anger activism model (AAM), focusing on how anger and efficacy interact to predict commitment to social activism. Across multiple experiments, I use nonlinear models of anger, average marginal effects (AMEs), and second differences to identify the levels of anger at which the effects of efficacy change.</p>
+                <p className="mt-4 max-w-[68ch] text-base leading-[1.7] text-muted-foreground">When efficacy beliefs are strong, the model predicts that prosocial outcomes increase steadily as anger increases. When efficacy beliefs are weak, it predicts an inverse U-shape: moderate anger promotes action, but extreme anger becomes less productive.</p>
               </div>
               <figure className="min-w-0">
                 <div className="border border-border bg-white p-2">
                   <img src={aamModelFigureUrl} alt="Line graph of the anger activism model's predictions. With strong efficacy beliefs, prosocial outcomes rise linearly as anger increases from 0 to 100; with weak efficacy beliefs, outcomes rise, then fall, then level off below the scale midpoint." width="1030" height="716" loading="lazy" className="h-auto w-full object-contain" data-testid="img-aam-model-figure"/>
                 </div>
                 <figcaption className="mt-2 px-1 text-sm leading-5 text-muted-foreground">Predictions of the anger activism model (AAM; Turner, 2007) for prosocial outcomes.</figcaption>
-                <p className="mt-2 px-1 text-sm leading-6 text-muted-foreground">When efficacy beliefs are strong, the model predicts that prosocial outcomes increase steadily as anger increases. When efficacy beliefs are weak, it predicts an inverse U-shape: moderate anger promotes action, but extreme anger becomes less productive.</p>
               </figure>
             </article>
 
-            <article className="grid gap-7 border border-border bg-card p-6 md:p-8 lg:grid-cols-[1.1fr_.9fr] lg:gap-10">
-              <div>
+            {/* Desktop: text and chatbot mockup stacked on the left, SSI images spanning both rows on the right. Mobile: text, SSI images, then chatbot (same order as the paragraph). */}
+            <article className="grid items-start gap-7 border border-border bg-card p-6 md:p-8 lg:grid-cols-[1.1fr_.9fr] lg:gap-x-10 lg:gap-y-8">
+              <div className="lg:col-start-1 lg:row-start-1">
                 <Eyebrow>Campaigns · AI</Eyebrow>
                 <h3 className="mt-4 font-serif text-3xl">From formative work to feedback</h3>
                 <p className="mt-4 max-w-[68ch] text-base leading-[1.7] text-muted-foreground">I contribute to campaign research, including the Shorter Shower Initiative and a six-wave collegiate social-norms campaign study. More recently, I have begun to examine whether AI can help correct normative misperceptions, for example, how people respond to descriptive norm feedback delivered through conversations with a relational AI chatbot.</p>
               </div>
-              <figure className="min-w-0">
+              <figure className="min-w-0 lg:col-start-2 lg:row-span-2 lg:row-start-1">
                 {/* Each image's flex-grow equals its aspect ratio (380/730, 1100/1640), so side by side they render at the same height, uncropped. max-w caps that height at 380px. */}
-                <div className="flex flex-col gap-3 sm:max-w-[501px] sm:flex-row sm:items-start">
-                  <a href={ssiStallSetupUrl} target="_blank" rel="noopener noreferrer" aria-label="Open full-size Shorter Shower Initiative stall setup image in a new tab" className="block min-w-0 border border-border bg-white p-2 sm:flex-[0.5205_1_0%]" data-testid="link-ssi-stall-image">
+                <div className="flex max-w-[501px] flex-row items-start gap-3">
+                  <a href={ssiStallSetupUrl} target="_blank" rel="noopener noreferrer" aria-label="Open full-size Shorter Shower Initiative stall setup image in a new tab" className="block min-w-0 flex-[0.5205_1_0%] border border-border bg-white p-2" data-testid="link-ssi-stall-image">
                     <img src={ssiStallSetupUrl} alt="Shower stall with a digital water meter above the showerhead, and a round shower timer, an instruction card, and a poster mounted on the tiled wall." width="380" height="730" loading="lazy" className="block h-auto w-full object-contain" data-testid="img-ssi-stall"/>
                   </a>
-                  <a href={ssiPosterUrl} target="_blank" rel="noopener noreferrer" aria-label="Open full-size Shorter Shower Initiative poster image in a new tab" className="block min-w-0 border border-border bg-white p-2 sm:flex-[0.6707_1_0%]" data-testid="link-ssi-poster-image">
+                  <a href={ssiPosterUrl} target="_blank" rel="noopener noreferrer" aria-label="Open full-size Shorter Shower Initiative poster image in a new tab" className="block min-w-0 flex-[0.6707_1_0%] border border-border bg-white p-2" data-testid="link-ssi-poster-image">
                     <img src={ssiPosterUrl} alt="Poster titled 'Quickies are good for the planet' with a playlist of three songs, the carbon emissions saved by getting out of the shower before each song ends, and the line 'Heating water is a major source of carbon emissions.'" width="1100" height="1640" loading="lazy" className="block h-auto w-full object-contain" data-testid="img-ssi-poster"/>
                   </a>
                 </div>
                 <figcaption className="mt-3 text-sm leading-6 text-muted-foreground">Shorter Shower Initiative field experiment. Left: a shower stall in the timer + message condition; a water meter installed above the showerhead recorded water use for each shower. Right: the poster used in this condition (7-minute version for women&apos;s bathrooms; the men&apos;s version recommended 6 minutes). The QR code that linked to the playlist is not shown.</figcaption>
               </figure>
+              <figure className="min-w-0 lg:col-start-1 lg:row-start-2">
+                <a href={aiChatbotMockupUrl} target="_blank" rel="noopener noreferrer" aria-label="Open full-size AI chatbot mockup image in a new tab" className="block max-w-[480px] border border-border bg-white p-2" data-testid="link-ai-chatbot-image">
+                  <img src={aiChatbotMockupUrl} alt="Mockup of a chat window with an AI chat assistant. A student writes that it feels like everyone drinks a lot on weekends. The assistant acknowledges the feeling, asks whether it can share what students reported, and then says that in a campus survey most students said they have 4 or fewer drinks when they go out, and that most people guess much higher." width="1120" height="760" loading="lazy" className="block h-auto w-full object-contain" data-testid="img-ai-chatbot"/>
+                </a>
+                <figcaption className="mt-2 px-1 text-sm leading-6 text-muted-foreground">Illustrative mockup of a relational AI chatbot delivering descriptive norm feedback in conversation. It is not an actual study stimulus.</figcaption>
+              </figure>
             </article>
           </div>
           <div className="mt-8 flex justify-end border-t border-border pt-6">
-            <a href="#publications" className="inline-flex items-center gap-2 text-sm text-primary underline underline-offset-4 hover:decoration-2" data-testid="link-see-publications">See publications <ArrowUpRight size={14}/></a>
+            <a href="#publications" className="inline-flex min-h-8 items-center gap-2 text-sm text-primary underline underline-offset-4 hover:decoration-2" data-testid="link-see-publications">See publications <ArrowUpRight size={14}/></a>
           </div>
         </div>
       </section>

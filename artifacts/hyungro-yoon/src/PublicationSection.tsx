@@ -1,4 +1,5 @@
 import { useState, type ReactNode } from 'react';
+import SectionHeading from './SectionHeading';
 
 const featuredStudyPdfUrl = `${import.meta.env.BASE_URL}assets/featured-study.pdf`;
 
@@ -35,7 +36,7 @@ function PublicationRow({
       data-testid={testId}
     >
       <span className="font-mono text-xs text-primary">{label}</span>
-      <div className="text-sm leading-6 text-foreground">{children}</div>
+      <div className="max-w-[40rem] text-sm leading-6 text-foreground">{children}</div>
     </article>
   );
 }
@@ -214,10 +215,7 @@ export default function PublicationSection({ cvUrl }: { cvUrl: string }) {
 
   return (
     <section id="publications" className="mx-auto max-w-[1240px] px-5 py-20 md:px-10 md:py-28">
-      <div className="mb-10 flex items-baseline gap-4">
-        <span className="font-mono text-xs text-primary">03</span>
-        <h2 className="font-serif text-4xl leading-none md:text-5xl">Publications</h2>
-      </div>
+      <SectionHeading number="03">Publications</SectionHeading>
 
       <div className="space-y-10">
         <section aria-labelledby="journal-articles-heading">
