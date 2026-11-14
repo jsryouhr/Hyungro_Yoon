@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Menu, X, ArrowUpRight, Download, Mail, MapPin, BookOpen, Microscope, GraduationCap, Fingerprint, Linkedin } from 'lucide-react';
+import { Menu, X, ArrowUpRight, Download, Mail, MapPin, BookOpen, Microscope, GraduationCap, Fingerprint, Linkedin, FlaskConical, Newspaper } from 'lucide-react';
 import PublicationSection from './PublicationSection';
 import SectionHeading from './SectionHeading';
 
@@ -13,6 +13,11 @@ const profileLinks = [
     label: 'Google Scholar',
     href: 'https://scholar.google.com/citations?user=3rJQ8uwAAAAJ&hl=en',
     Icon: BookOpen,
+  },
+  {
+    label: 'ResearchGate',
+    href: 'https://www.researchgate.net/profile/Hyungro-Yoon-2',
+    Icon: FlaskConical,
   },
   {
     label: 'ORCID',
@@ -166,6 +171,14 @@ function App() {
                 <Eyebrow>Campaigns · AI</Eyebrow>
                 <h3 className="mt-4 font-serif text-3xl">From formative work to feedback</h3>
                 <p className="mt-4 max-w-[68ch] text-base leading-[1.7] text-muted-foreground">I contribute to campaign research, including the Shorter Shower Initiative and a six-wave collegiate social-norms campaign study. More recently, I have begun to examine whether AI can help correct normative misperceptions, for example, how people respond to descriptive norm feedback delivered through conversations with a relational AI chatbot.</p>
+                <div className="mt-5 flex gap-3 border-l-2 border-primary/40 pl-4" data-testid="news-ssi">
+                  <Newspaper size={16} className="mt-1 shrink-0 text-primary" aria-hidden="true"/>
+                  <p className="text-sm leading-6 text-muted-foreground">
+                    <span className="block font-mono text-xs uppercase tracking-[.2em] text-primary">In the news</span>
+                    <a href="https://statenews.com/article/2025/02/msus-shorter-shower-initiative-works-to-reduce-excessive-use-of-heated-water" target="_blank" rel="noopener noreferrer" className="mt-1 inline text-foreground underline decoration-primary/40 underline-offset-4 hover:decoration-primary" data-testid="link-news-statenews">MSU Shorter Shower Initiative works to reduce excessive use of heated water</a>
+                    <span className="block">The State News · February 24, 2025</span>
+                  </p>
+                </div>
               </div>
               <figure className="min-w-0 lg:col-start-2 lg:row-span-2 lg:row-start-1">
                 {/* Each image's flex-grow equals its aspect ratio (380/730, 1100/1640), so side by side they render at the same height, uncropped. max-w caps that height at 380px. */}
@@ -210,6 +223,28 @@ function App() {
                 ['COM 100','Human Communication','Summer 2024 · Spring 2024 · Fall 2023'],
                 ['COMM 3710','Introduction to Quantitative Communication Research','Spring 2021 · University of Utah'],
               ].map(([code, title, term])=><article key={code} className="grid gap-2 py-5 sm:grid-cols-[100px_1fr] sm:gap-5"><span className="text-sm font-semibold text-muted-foreground">{code}</span><div><h4 className="text-base">{title}</h4><p className="mt-1 font-mono text-xs leading-5 text-primary">{term}</p></div></article>)}
+            </div>
+          </div>
+
+          <div className="mt-16" data-testid="student-feedback">
+            <h3 className="text-sm font-semibold">Student feedback</h3>
+            <div className="mt-5 grid gap-10 md:grid-cols-[.72fr_1.28fr]">
+              <div className="self-start border border-border bg-card p-6">
+                <p className="font-serif text-6xl leading-none text-primary">4.23<span className="ml-2 font-sans text-base text-muted-foreground">/ 5</span></p>
+                <p className="mt-4 text-base leading-[1.6]">&ldquo;Hyungro Yoon created an atmosphere that supported my learning.&rdquo;</p>
+                <p className="mt-3 text-sm leading-6 text-muted-foreground">Average rating across 10 end-of-term surveys, 2023&ndash;2026 (70 responses). 84% agreed or strongly agreed; none disagreed.</p>
+                <p className="mt-4 border-t border-border pt-3 text-xs leading-5 text-muted-foreground">Source: MSU Student Perceptions of Learning Survey</p>
+              </div>
+              <div className="divide-y divide-border border-y border-border">
+                {[
+                  ['Hyungro Yoon was great. The recitations were very informational and he did a great job of engaging us students. He created a great environment where students wanted to interact and be involved in class every week. …', 'COM 240 · Fall 2024'],
+                  ['Hyungro is amazing and helped us every step of the way!', 'COM 300 · Spring 2026'],
+                  ['I really enjoyed this class. Being an older student already having a career in a professional setting, and being recently promoted, I found that all of the course work benefited me greatly and tied in to my work life. The assignments were engaging and helped me grow professionally.', 'COM 240 · Summer 2026 (online)'],
+                ].map(([quote, source]) => <figure key={source} className="py-5">
+                  <blockquote className="max-w-[62ch] font-serif text-xl leading-[1.45]">&ldquo;{quote}&rdquo;</blockquote>
+                  <figcaption className="mt-2 font-mono text-xs leading-5 text-primary">{source}</figcaption>
+                </figure>)}
+              </div>
             </div>
           </div>
         </div>
