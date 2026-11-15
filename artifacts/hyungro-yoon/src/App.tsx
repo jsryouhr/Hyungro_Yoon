@@ -100,7 +100,7 @@ function App() {
           <div className="relative">
             <div className="absolute -right-3 -top-3 h-full w-full border border-primary/55"/>
             <div className="relative aspect-square overflow-hidden bg-muted">
-              <img src={portraitUrl} alt="Portrait of Hyungro Yoon" width="600" height="600" className="h-full w-full object-cover object-center grayscale-[12%]"/>
+              <img src={portraitUrl} alt="Portrait of Hyungro Yoon" width="900" height="900" className="h-full w-full object-cover object-center grayscale-[12%]"/>
             </div>
           </div>
           <div className="mt-3 border border-border bg-background px-4 py-3 md:absolute md:-bottom-8 md:-left-5 md:mt-0">
