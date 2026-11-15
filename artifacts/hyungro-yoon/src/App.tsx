@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Menu, X, ArrowUpRight, Download, Mail, MapPin, BookOpen, Microscope, GraduationCap, Fingerprint, Linkedin, FlaskConical, Newspaper } from 'lucide-react';
+import { Menu, X, ArrowUpRight, Download, Mail, MapPin, BookOpen, Microscope, GraduationCap, Fingerprint, Linkedin, FlaskConical, Newspaper, University, Award } from 'lucide-react';
 import PublicationSection from './PublicationSection';
 import SectionHeading from './SectionHeading';
 
@@ -23,6 +23,11 @@ const profileLinks = [
     label: 'ORCID',
     href: 'https://orcid.org/0000-0002-7877-1249',
     Icon: Fingerprint,
+  },
+  {
+    label: 'MSU Profile',
+    href: 'https://comartsci.msu.edu/our-people/hyungro-yoon',
+    Icon: University,
   },
   {
     label: 'LinkedIn',
@@ -136,7 +141,7 @@ function App() {
                 <div className="mt-8 flex flex-wrap gap-2">{['TNSB','Referent groups','Group identity','U.S.–Korea'].map(t=><span key={t} className="border border-border bg-accent px-2.5 py-1 text-sm text-accent-foreground">{t}</span>)}</div>
               </div>
               <div className="min-w-0">
-                <p className="text-sm leading-6 text-muted-foreground">Featured study: <strong className="font-semibold text-foreground">Yoon, H.</strong>, Jang, Y., Lapinski, M. K., Turner, M. M., Peng, T. Q., &amp; Lee, S. (2024). <em>Health Communication, 39</em>(13), 3108–3121.{' '}
+                <p className="text-sm leading-6 text-muted-foreground">Featured study: <strong className="font-semibold text-foreground">Yoon, H.</strong>, Jang, Y., Lapinski, M. K., Turner, M. M., Peng, T.-Q., &amp; Lee, S. (2024). <em>Health Communication, 39</em>(13), 3108–3121.{' '}
                   <a href="https://doi.org/10.1080/10410236.2024.2303826" target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-2" data-testid="link-featured-study-doi">DOI</a>
                 </p>
                 <figure className="mt-4">
@@ -213,14 +218,14 @@ function App() {
           <SectionHeading number="04" note="Michigan State University, unless noted">Teaching</SectionHeading>
           <div className="grid gap-10 md:grid-cols-[.72fr_1.28fr]">
             <div>
-              <p className="max-w-[68ch] text-base leading-[1.7] text-muted-foreground">As a graduate teaching assistant, I have supported undergraduate courses across organizational communication, methods, and human communication. In Summer 2026, I taught an online section of COM 240 as the instructor.</p>
+              <p className="max-w-[68ch] text-base leading-[1.7] text-muted-foreground">As a graduate teaching assistant, I have supported undergraduate courses across organizational communication, methods, and human communication. As the instructor, I have also taught COM 100 (Summer 2024) and an online section of COM 240 (Summer 2026).</p>
               <p className="mt-4 text-sm leading-6 text-muted-foreground">Teaching interests: Persuasion · Health communication · Research methods · Cross-cultural communication</p>
             </div>
             <div className="divide-y divide-border border-y border-border">
               {[
                 ['COM 240','Organizational Communication','Fall 2026 · Summer 2026 (Instructor, online) · Fall 2024'],
                 ['COM 300','Methods of Communication Inquiry','Spring 2026 · Fall 2025 · Spring 2025'],
-                ['COM 100','Human Communication','Summer 2024 · Spring 2024 · Fall 2023'],
+                ['COM 100','Human Communication','Summer 2024 (Instructor) · Spring 2024 · Fall 2023'],
                 ['COMM 3710','Introduction to Quantitative Communication Research','Spring 2021 · University of Utah'],
               ].map(([code, title, term])=><article key={code} className="grid gap-2 py-5 sm:grid-cols-[100px_1fr] sm:gap-5"><span className="text-sm font-semibold text-muted-foreground">{code}</span><div><h4 className="text-base">{title}</h4><p className="mt-1 font-mono text-xs leading-5 text-primary">{term}</p></div></article>)}
             </div>
@@ -268,6 +273,31 @@ function App() {
               ['2020–2021','Reporter Intern','Korea Congress Newspaper, South Korea'],
             ].map(([year, role, organization])=><article key={`${year}-${role}`} className="relative pb-7 last:pb-0"><span className="absolute -left-[29px] top-1.5 h-1.5 w-1.5 bg-primary"/><span className="font-mono text-xs text-primary">{year}</span><h4 className="mt-1 text-base">{role}</h4><p className="mt-1 text-base leading-[1.7] text-muted-foreground">{organization}</p></article>)}
           </div></div>
+        </div>
+        <div className="mt-14" data-testid="awards">
+          <h3 className="text-sm font-semibold">Awards &amp; honors</h3>
+          <div className="mt-5 grid gap-x-12 gap-y-7 md:grid-cols-2">
+            {[
+              [
+                { year: '2026', title: 'Graduate School Travel Fellowship', detail: 'The Graduate School, Michigan State University' },
+                { year: '2026', title: 'COGS Conference Award', detail: 'Council of Graduate Students (COGS), Michigan State University' },
+                { year: '2025', title: 'Top Paper Award', detail: '111th Annual Convention of the National Communication Association, Denver, CO', paper: 'The anger defiance hypothesis: When discouraging efficacy fuels agency' },
+              ],
+              [
+                { year: '2022–2026', title: 'Department of Communication Travel Funds', detail: 'Michigan State University · NCA 2022, 2023, 2025, 2026; ICA 2023, 2024, 2025, 2027' },
+                { year: '2018–2020', title: "Dean's List", detail: 'Department of Communication, University of Utah' },
+                { year: '2015', title: 'Korean Government Scholarship', detail: 'Korean College Student Financial Aid Foundation' },
+              ],
+            ].map((column, columnIndex) => <div key={columnIndex} className="border-l border-border pl-6">
+              {column.map(({ year, title, detail, paper }) => <article key={title} className="relative pb-7 last:pb-0">
+                <span className="absolute -left-[29px] top-1.5 h-1.5 w-1.5 bg-primary"/>
+                <span className="font-mono text-xs text-primary">{year}</span>
+                <h4 className={`mt-1 flex items-center gap-2 text-base ${paper ? 'text-primary' : ''}`}>{paper && <Award size={16} aria-hidden="true"/>}{title}</h4>
+                <p className="mt-1 text-base leading-[1.7] text-muted-foreground">{detail}</p>
+                {paper && <p className="mt-1 text-sm leading-6 text-muted-foreground">Paper: &ldquo;{paper}&rdquo; (Turner, Cho, Yoon, Jeon, &amp; Du)</p>}
+              </article>)}
+            </div>)}
+          </div>
         </div>
       </section>
 

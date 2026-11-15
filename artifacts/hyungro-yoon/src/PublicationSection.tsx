@@ -1,4 +1,5 @@
 import { useState, type ReactNode } from 'react';
+import { Award } from 'lucide-react';
 import SectionHeading from './SectionHeading';
 
 const featuredStudyPdfUrl = `${import.meta.env.BASE_URL}assets/featured-study.pdf`;
@@ -18,6 +19,15 @@ function DoiLink({ href }: { href: string }) {
     <a href={href} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-2 [overflow-wrap:anywhere]">
       {href}
     </a>
+  );
+}
+
+function AwardBadge({ children }: { children: string }) {
+  return (
+    <span className="inline-flex items-center gap-1 whitespace-nowrap bg-primary px-2 py-0.5 align-middle font-mono text-xs leading-4 text-primary-foreground">
+      <Award size={12} aria-hidden="true" />
+      {children}
+    </span>
   );
 }
 
@@ -51,14 +61,14 @@ const journalArticles = [
   },
   {
     year: '2024',
-    authors: 'Yoon, H., Jang, Y., Lapinski, M. K., Turner, M. M., Peng, T. Q., & Lee, S.',
+    authors: 'Yoon, H., Jang, Y., Lapinski, M. K., Turner, M. M., Peng, T.-Q., & Lee, S.',
     title: 'The role of collective group orientation and social norms on physical distancing behaviors for disease prevention.',
     venue: <><em>Health Communication, 39</em>(13), 3108–3121.</>,
     doi: 'https://doi.org/10.1080/10410236.2024.2303826',
     pdf: true,
   },
   {
-    year: '2023',
+    year: '2024',
     authors: 'Schmälzle, R., Liu, H., Delle, F. A., Lewin, K. M., Jahn, N. T., Zhang, Y., Yoon, H., & Long, J.',
     title: 'Moment-by-moment tracking of audience brain responses to an engaging public speech: Replicating the reverse-message engineering approach.',
     venue: <><em>Communication Monographs, 91</em>(1), 31–55.</>,
@@ -66,7 +76,12 @@ const journalArticles = [
   },
 ];
 
-const manuscriptsInPreparation = [
+const manuscriptsInPreparation: { authors: string; title: string; tag: string; award?: string }[] = [
+  {
+    authors: 'Yoon, H.',
+    title: 'When normative feedback becomes a conversation: Relational AI and the acceptance of descriptive norm feedback.',
+    tag: 'Submitted to ICA 2027',
+  },
   {
     authors: 'Yoon, H., Turner, M. M., Jeon, M., & Cho, H. J.',
     title: 'Not all efficacy is the same: Disaggregating self-efficacy, response efficacy, and retributive efficacy in anger-based persuasion.',
@@ -83,7 +98,7 @@ const manuscriptsInPreparation = [
     tag: 'Submitted to ICA 2027',
   },
   {
-    authors: 'Yoon, H., Kim, M., Heo, R., Iyer, S., Lapinski, M., Moore, N., Tracey, K., & Waller, J.',
+    authors: 'Yoon, H., Kim, M., Heo, R., Iyer, S., Lapinski, M. K., Moore, N., Tracey, K., & Waller, J.',
     title: 'The Shorter Shower Initiative: Using formative data to shape messages about water conservation.',
     tag: 'Presented at NCA 2025',
   },
@@ -96,6 +111,7 @@ const manuscriptsInPreparation = [
     authors: 'Turner, M. M., Cho, H. J., Yoon, H., Jeon, M., & Du, Y.',
     title: 'The anger defiance hypothesis: When discouraging efficacy fuels agency.',
     tag: 'Presented at NCA 2025',
+    award: 'Top Paper Award, NCA 2025',
   },
   {
     authors: 'Turner, M. M., Cho, H. J., Yoon, H., Jeon, M., & Du, Y.',
@@ -109,17 +125,17 @@ const manuscriptsInPreparation = [
   },
 ];
 
-const presentationGroups = [
+const presentationGroups: { label: string; items: { authors: string; title: string; award?: string }[] }[] = [
   {
     label: 'ICA 2027 · Glasgow · Submitted',
     items: [
       {
         authors: 'Yoon, H., Lapinski, M. K., Kim, M., Waller, J., & Moore, N.',
-        title: 'Whose norms, whose group? The role of referent groups and group identity in normative influence on water conservation behavior [Extended abstract].',
+        title: 'Whose norms, whose group? The role of referent groups and group identity in normative influence on water conservation behavior.',
       },
       {
         authors: 'Yoon, H.',
-        title: 'When normative feedback becomes a conversation: Relational AI and the acceptance of descriptive norm feedback [Extended abstract].',
+        title: 'When normative feedback becomes a conversation: Relational AI and the acceptance of descriptive norm feedback.',
       },
       {
         authors: 'Lapinski, M. K., Waller, J., Moore, N., Yoon, H., Kim, M., Tracey, K., Iyer, S., Heo, R., & Chowles, R.',
@@ -152,7 +168,7 @@ const presentationGroups = [
     label: 'NCA 2025 · Denver',
     items: [
       {
-        authors: 'Yoon, H., Kim, M., Heo, R., Iyer, S., Lapinski, M., Moore, N., Tracey, K., & Waller, J.',
+        authors: 'Yoon, H., Kim, M., Heo, R., Iyer, S., Lapinski, M. K., Moore, N., Tracey, K., & Waller, J.',
         title: 'The Shorter Shower Initiative: Using formative data to shape messages about water conservation.',
       },
       {
@@ -162,6 +178,7 @@ const presentationGroups = [
       {
         authors: 'Turner, M. M., Cho, H. J., Yoon, H., Jeon, M., & Du, Y.',
         title: 'The anger defiance hypothesis: When discouraging efficacy fuels agency.',
+        award: 'Top Paper Award',
       },
     ],
   },
@@ -178,7 +195,7 @@ const presentationGroups = [
     label: 'ICA 2024 · Gold Coast',
     items: [
       {
-        authors: 'Heo, R., Lapinski, M., Liu, R., Kerr, J., Zhao, J., Bum, T., Wang, Y., Yoon, H., Hipple, S., & Lu, Z.',
+        authors: 'Heo, R., Lapinski, M. K., Liu, R., Kerr, J., Zhao, J., Bum, T., Wang, Y., Yoon, H., Hipple, S., & Lu, Z.',
         title: 'Social norms for illegal hunting and patrolling to prevent it: Formative data for intervention design and communication campaigns.',
       },
       {
@@ -191,7 +208,7 @@ const presentationGroups = [
     label: 'ICA 2023 · Toronto',
     items: [
       {
-        authors: 'Yoon, H., Jang, Y., Lee, S., Lapinski, M., Peng, W., & Turner, M. M.',
+        authors: 'Yoon, H., Jang, Y., Lee, S., Lapinski, M. K., Peng, T.-Q., & Turner, M. M.',
         title: 'The role of collective group orientation and social norms on physical distancing behaviors for disease prevention.',
       },
     ],
@@ -221,8 +238,8 @@ export default function PublicationSection({ cvUrl }: { cvUrl: string }) {
         <section aria-labelledby="journal-articles-heading">
           <h3 id="journal-articles-heading" className="mb-3 text-sm font-semibold">Journal articles</h3>
           <div className="border-y border-border divide-y divide-border">
-            {journalArticles.map((article) => (
-              <PublicationRow key={article.year} label={article.year} testId={`publication-journal-${article.year}`}>
+            {journalArticles.map((article, index) => (
+              <PublicationRow key={article.doi} label={article.year} testId={`publication-journal-${index + 1}`}>
                 <Authors names={article.authors} /> ({article.year}). {article.title} {article.venue}{' '}
                 <DoiLink href={article.doi} />
                 {article.pdf && (
@@ -259,9 +276,10 @@ export default function PublicationSection({ cvUrl }: { cvUrl: string }) {
           <h3 id="manuscripts-heading" className="mb-3 text-sm font-semibold">Manuscripts in preparation</h3>
           <div className="border-y border-border divide-y divide-border">
             {manuscriptsInPreparation.map((manuscript, index) => (
-              <PublicationRow key={manuscript.title} label={`0${index + 1}`} testId={`publication-in-preparation-${index + 1}`}>
+              <PublicationRow key={manuscript.title} label={String(index + 1).padStart(2, '0')} testId={`publication-in-preparation-${index + 1}`}>
                 <Authors names={manuscript.authors} /> {manuscript.title}{' '}
                 <span className="inline-block whitespace-nowrap border border-border bg-accent px-2 py-0.5 align-middle font-mono text-xs leading-4 text-accent-foreground">{manuscript.tag}</span>
+                {manuscript.award && <>{' '}<AwardBadge>{manuscript.award}</AwardBadge></>}
               </PublicationRow>
             ))}
           </div>
@@ -276,6 +294,7 @@ export default function PublicationSection({ cvUrl }: { cvUrl: string }) {
                   {group.items.map((item, index) => (
                     <li key={`${item.title}-${index}`} className="leading-6">
                       <Authors names={item.authors} /> {item.title}
+                      {item.award && <>{' '}<AwardBadge>{item.award}</AwardBadge></>}
                     </li>
                   ))}
                 </ul>
